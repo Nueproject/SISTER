@@ -1,0 +1,7 @@
+[17-Mar-2025 05:41:30 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/public_html/SISTER/module/resepsionis/cetak_kartu.php on line 9
+[17-Mar-2025 05:41:31 UTC] PHP Warning:  Undefined array key "idtamu" in /home/ldbncnzn/public_html/SISTER/module/resepsionis/cetak_kartu.php on line 7
+[17-Mar-2025 05:41:31 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/public_html/SISTER/module/resepsionis/cetak_kartu.php on line 9
+[17-Mar-2025 09:56:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/ptsp.kanreg1bkn.com/module/resepsionis/cetak_kartu.php on line 9
+[18-Mar-2025 02:41:39 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/ptsp.kanreg1bkn.com/module/resepsionis/cetak_kartu.php on line 9
+[18-Mar-2025 02:42:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/ptsp.kanreg1bkn.com/module/resepsionis/cetak_kartu.php on line 9
+[18-Mar-2025 02:43:38 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/ldbncnzn/ptsp.kanreg1bkn.com/module/resepsionis/cetak_kartu.php on line 9
