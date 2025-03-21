@@ -54,7 +54,8 @@ INSERT INTO data_instansi (id_instansi, nama_instansi, pic_pensiun, telp_pensiun
 ('41', 'Kota Surakarta', '', '', '', ''),
 ('42', 'Kota Tegal', '', '', '', ''),
 ('43', 'Pribadi', '', '', '', ''),
-('44', 'Umum', '', '', '', '');
+('44', 'Umum', '', '', '', ''),
+('45', 'Vertikal', '', '', '', '');
 
 -- --------------------------------------------------------------
 

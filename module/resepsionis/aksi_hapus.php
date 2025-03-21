@@ -10,7 +10,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     include "../../lib/koneksi.php";
 
     $idTamu = $_GET['id_tamu'];
-    $queryHapus = mysqli_query($koneksi,"DELETE FROM data_tamu_instansi WHERE id_tamu_instansi='$idTamu'");
+    $queryHapus = mysqli_query($koneksi,"DELETE FROM data_pelayanan WHERE id_pelayanan='$idTamu'");
     if ($queryHapus) {
         echo "<script> alert('Data Tamu Berhasil Dihapus'); window.location = '../../adminweb.php?module=resepsionis';</script>";
     } else {

@@ -15,9 +15,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
     echo "<a href=$admin_url><b>LOGIN</b></a></center>";
 } else { 
 	$user = $_SESSION['username'];
-    $sqlUser = "select * from sister where username='".$_SESSION['username']."'";
+    $sqlUser = "select * from user where username='".$_SESSION['username']."'";
 
- 	$kuerisqluser= mysqli_query($koneksi,"select * from sister where username='".$_SESSION['username']."'");
+ 	$kuerisqluser= mysqli_query($koneksi,"select * from user where username='".$_SESSION['username']."'");
  
  	$user = $_SESSION['username'];
     ?>
@@ -88,7 +88,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 
 <?php
 //$kode = 4;
-$dataTamu = "select * from data_tamu_instansi dti join data_tamu dt on dti.nip = dt.nip join data_bidang db on dti.bidang = db.id join data_instansi di on dt.instansi = di.id_instansi join status s on dti.status = s.id_status where id_tamu_instansi =$kode";
+$dataTamu = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_pelayanan =$kode";
 $kueriQuo= mysqli_query($koneksi, $dataTamu);
 	while($pro=mysqli_fetch_array($kueriQuo)){ 
 
@@ -98,11 +98,11 @@ echo'
     <tr>
         <td width="150px">&emsp; Nama &emsp; &emsp; &emsp; &emsp; : </td>
         
-        <td width="200px">'.$pro['nama'].'</td>
+        <td width="200px">'.$pro['nama_tamu'].'</td>
     </tr>
     <tr><td width="150px">&emsp; NIP</td>
        
-        <td width="200px">'.$pro['nip'].'</td>
+        <td width="200px">'.$pro['nip_tamu'].'</td>
     </tr>    
     <tr><td width="150px">&emsp; Instansi</td>
         
@@ -127,7 +127,7 @@ echo'
 
 <table>
     <?php
-    $dataTamu = "select * from data_tamu_instansi dti join data_tamu dt on dti.nip = dt.nip join data_bidang db on dti.bidang = db.id join data_instansi di on dt.instansi = di.id_instansi join status s on dti.status = s.id_status where id_tamu_instansi =$kode";
+    $dataTamu = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_pelayanan =$kode";
     $kueriQuo= mysqli_query($koneksi, $dataTamu);
         while($pro=mysqli_fetch_array($kueriQuo)){ 
 
@@ -154,7 +154,7 @@ echo'
 </table>
 <br><br><br>
 <?php
-$dataTamu = "select * from data_tamu_instansi dti join data_tamu dt on dti.nip = dt.nip join data_bidang db on dti.bidang = db.id join data_instansi di on dt.instansi = di.id_instansi join status s on dti.status = s.id_status where id_tamu_instansi =$kode";
+$dataTamu = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_pelayanan =$kode";
 $kueriQuo= mysqli_query($koneksi, $dataTamu);
 	while($pro=mysqli_fetch_array($kueriQuo)){ 
 
@@ -162,7 +162,7 @@ echo'
 <table border="0">
 <tr>
         <td width="20px"> </td>
-        <td><center><b>( '.$pro['nama'].' )</b></center></td>
+        <td><center><b>( '.$pro['nama_tamu'].' )</b></center></td>
         <td width="150px"></td>
         <td><b>( '.$user.' )</b></td>
     </tr>
@@ -197,8 +197,7 @@ echo'
 <?php
 
 
-$kode = "";
-$dataTamu = "select * from data_tamu_instansi dti join data_tamu dt on dti.nip = dt.nip join data_bidang db on dti.bidang = db.id join data_instansi di on dt.instansi = di.id_instansi join status s on dti.status = s.id_status where id_tamu_instansi = 5";
+$dataTamu = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_pelayanan =$kode";
 $kueriQuo= mysqli_query($koneksi, $dataTamu);
 	while($pro=mysqli_fetch_array($kueriQuo)){ 
        
@@ -213,7 +212,7 @@ echo'
     
         <td>Nama</td>
         <td width="10px"> : </td>
-        <td width="470px">'.$pro['nama'].'</td>
+        <td width="470px">'.$pro['nama_tamu'].'</td>
     </tr>
    
     <tr>
@@ -226,7 +225,7 @@ echo'
         
         <td>Kedatangan</td>
         <td width="10px"> : </td>
-        <td width="470px">'.$teko.'</td>
+        <td width="470px">'.$pro['tgl_datang'].'/'.$pro['jam_datang'].'</td>
     </tr> 
     </td>
     </tr>

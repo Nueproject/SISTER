@@ -1,9 +1,9 @@
 <?php
 // definisikan koneksi ke database
 $server = "localhost";
-$username = "root";
-$password = "";
-$database = "sister";
+$username = "ldbncnzn_admin";
+$password = "Kanreg1!";
+$database = "ldbncnzn_sister";
 
 // Koneksi dan memilih database di server
 

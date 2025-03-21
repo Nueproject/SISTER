@@ -21,35 +21,55 @@
 		$keterangan = $_SESSION['formTambahBaru']['keterangan'];
 		$status = "1";
 		$tgl_datang = date('Y-m-d');
-		$idtgl = date('dYm');
-		$nambid = "select nama_bidang from data_bidang where id= '$bidang'";
-
-		$maxid = "select max(id_tamu_instansi) AS idtamu from data_tamu_instansi";
+		$idtgl = date('dmY');
+		$nambid = "select nama_bidang from data_bidang where id_bidang= '$bidang'";
+		$maxid = "select max(id_pelayanan) AS idpelayanan from data_pelayanan";
 		$querymax = mysqli_query($koneksi, $maxid);
 		$count = $querymax->fetch_assoc();
-		$newid = $count['idtamu'] + 1;
+		$newid = $count['idpelayanan'] + 1;
+
+		$maxidtamu = "select max(id_tamu) AS idtamu from data_pelayanan";
+		$querymaxtamu = mysqli_query($koneksi, $maxidtamu);
+		$count2 = $querymaxtamu->fetch_assoc();
+		$newid_tamu = $count2['idtamu'] + 1;
 		$idbid = substr($nambid, 0, 2);
-		$idtamu = "$idbid-$idtgl-$newid";
 		
-		$cekdata="select nip from data_tamu where nip='$nip'";
+
+		$kobid = "select left(nama_bidang, 2) as kode from data_bidang where id_bidang = 2";
+		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
+		while ($rowbid = $kobid2->fetch_assoc()) {
+			$kodebid=$rowbid['kode'];
+		$kode_pel = "$kodebid-$idtgl-0$newid";
+
+		$cekdata="select * from data_tamu where nip_tamu='$nip'";
 		$ada= mysqli_query($koneksi, $cekdata) or die(mysqli_error($koneksi));
+		
 		if(mysqli_num_rows($ada)>0)
 		{ 
+			$idtamucek = "select id_tamu from data_tamu where nip_tamu= '$nip'";
+			$idcek= mysqli_query($koneksi, $idtamucek) or die(mysqli_error($koneksi));
+			while ($rowidtamu = $idcek->fetch_assoc()) {
+					$idtamu = $rowidtamu['id_tamu'];
+		
+			
 			//echo "<script> alert('Data NIP Tamu sudah ada'); window.location = '../../adminweb.php?module=resepsionis';</script>";
 			//echo "<h3>Pegawai telah Terdaftar! Silahkan menggunakan mode kunjungan lama.</h3>"; 
-			//$maxsid = mysqli_query($koneksi, "select max(id_tamu_instansi) AS idtamu from tamu_instansi");
+			//$maxsid = mysqli_query($koneksi, "select max(id_pelayanan) AS idtamu from tamu_instansi");
 			//$count = $maxsid->fetch_assoc();
-			$simpantamuinstansi = mysqli_query($koneksi, "insert into data_tamu_instansi (id_tamu_instansi, kode_tamu, nip, bidang, keperluan, keterangan, status, tgl_datang, jam_datang) values ('$newid', '$idtamu','$nip', '$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME())") or die(mysqli_error($koneksi));
-	
+
+			$simpantamuinstansi = mysqli_query($koneksi, "insert into data_pelayanan (id_pelayanan, kode_pelayanan, id_tamu, id_bidang, keperluan, keterangan, status, tgl_datang, jam_datang, id_pegawai) values ('$newid', '$kode_pel', '$idtamu', '$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME(), '1')") or die(mysqli_error($koneksi));
+			
+				}//whilecek
 		}
 		else
 		{
 		
-			$simpantamu = mysqli_query($koneksi, "insert into data_tamu (nip, nama, no_hp, instansi) values ('$nip', '$nama', '$nohp', '$instansi')") or die(mysqli_error($koneksi));
-			$simpantamuinstansi = mysqli_query($koneksi, "insert into data_tamu_instansi (id_tamu_instansi, kode_tamu, nip, bidang, keperluan, keterangan, status, tgl_datang, jam_datang) values ('$newid', '$idtamu','$nip', '$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME())") or die(mysqli_error($koneksi));
+			$simpantamu = mysqli_query($koneksi, "insert into data_tamu (id_tamu, nip_tamu, nama_tamu, no_hp, instansi) values ('$newid_tamu', '$nip', '$nama', '$nohp', '$instansi')") or die(mysqli_error($koneksi));
+			$simpantamuinstansi = mysqli_query($koneksi, "insert into data_pelayanan (id_pelayanan, kode_pelayanan, id_tamu, id_bidang, keperluan, keterangan, status, tgl_datang, jam_datang, id_pegawai) values ('$newid', '$kode_pel','$newid_tamu','$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME(), '1')") or die(mysqli_error($koneksi));
 	
 		//mysqli_query($koneksi) or die("Gagal menyimpan data karena :").mysqli_error();
 		}
+	}//kodebid
 
 	    //$clientData = mysqli_fetch_array($querytamuinstansi);
 		//$qsimpanquotation = mysqli_query($koneksi, "insert into cera_sales (sales_id_status, sales_quotation_no, sales_id_client) values (1, '$tgl_skrg-$newid', '$newidcl')") or die(mysqli_error($koneksi));
@@ -99,32 +119,36 @@
 		$tgl_datang = date('Y-m-d'); 
 		$idtgl = date('dYm');
 		$nambid = "select nama_bidang from data_bidang where id= '$bidang'";
-		date_default_timezone_set('Asia/Jakarta');
-		$updateTamu = mysqli_query($koneksi, "update data_tamu SET
-				nip='".$nip."',
-				nama='".$nama."',
-				instansi='".$instansi."'
-				where nip = ".$nip) or die(mysqli_error($koneksi));
+		
+		
+		date_default_timezone_set('Asia/Jakarta');		
 
-		$updateDataTamu = mysqli_query($koneksi, "update data_tamu_instansi SET 
-				id_tamu_instansi='".$id_tamu."', 
-				kode_tamu='".$kode_tamu."', 
-				nip='".$nip."', 
-				bidang='".$bidang."', 
+		$kobid = "select left(nama_bidang, 2) as kode from data_bidang where id_bidang = 2";
+		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
+		
+		
+
+		$updateTamu = mysqli_query($koneksi, "update data_tamu SET
+				nip_tamu='".$nip."',
+				nama_tamu='".$nama."',
+				instansi='".$instansi."'
+				where nip_tamu = ".$nip) or die(mysqli_error($koneksi));
+
+		$updateDataTamu = mysqli_query($koneksi, "update data_pelayanan SET 
+				id_pelayanan='".$id_tamu."', 
+				kode_pelayanan='".$kode_tamu."', 
+				id_bidang='".$bidang."', 
 				keperluan='".$keperluan."', 
 				keterangan='".$keterangan."', 
 				status='".$status."', 
 				tgl_datang='".$tgl_datang."'
-				where id_tamu_instansi =" .$id_tamu) or die(mysqli_error($koneksi));
+				where id_pelayanan =" .$id_tamu) or die(mysqli_error($koneksi));
 
-
-
-
-        unset($_SESSION['formDataUpdate']);
+		 unset($_SESSION['formDataCopy']);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-	}
+		}
 
 	
 	//Aksi Duplicate Tami	
@@ -133,6 +157,7 @@
 		
 		$_SESSION['formDataCopy'] = $_POST;
 		$nip = $_POST['nip_copy'];
+		$id_tamu = $_POST['id_tamu'];
 		$instansi =$_POST['instansiCopy'];
 		$bidang = $_POST['bidangCopy'];
 		$keperluan = $_POST['keperluan'];
@@ -141,20 +166,27 @@
 		$status = "1";
 		$tgl_datang = date('Y-m-d');
 		$idtgl = date('dYm');
-		$nambid = "select nama_bidang from data_bidang where id= '$bidang'";
+		$nambid = "select nama_bidang from data_bidang where id_bidang= '$bidang'";
 
-		$maxid = "select max(id_tamu_instansi) AS idtamu from data_tamu_instansi";
+		$maxid = "select max(id_pelayanan) AS idtamu from data_pelayanan";
 		$querymax = mysqli_query($koneksi, $maxid);
 		$count = $querymax->fetch_assoc();
 		$newid = $count['idtamu'] + 1;
-		$idbid = substr($nambid, 0, 3);
-		$idtamu = "$idbid-$idtgl-$newid";
+
+		
+		
 		date_default_timezone_set('Asia/Jakarta');		
 
-		$simpantamuinstansi = mysqli_query($koneksi, "insert into data_tamu_instansi 
-		(id_tamu_instansi, kode_tamu, nip, bidang, keperluan, keterangan, status, tgl_datang, jam_datang) values 
-		('$newid', '$idtamu','$nip', '$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME())") or die(mysqli_error($koneksi));
-	
+		$kobid = "select left(nama_bidang, 2) as kode from data_bidang where id_bidang = 2";
+		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
+		
+		while ($rowbid = $kobid2->fetch_assoc()) {
+		$kodebid=$rowbid['kode'];
+		$kode_pel = "$kodebid-$idtgl-0$newid";
+
+		$simpantamuinstansi = mysqli_query($koneksi, "insert into data_pelayanan (id_pelayanan, kode_pelayanan, id_tamu, id_bidang, keperluan, keterangan, status, tgl_datang, jam_datang, id_pegawai) values ('$newid', '$kode_pel','$id_tamu','$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME(), '1')") or die(mysqli_error($koneksi));
+		
+		} //KODE_BID
 
 
 

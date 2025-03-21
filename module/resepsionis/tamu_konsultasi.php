@@ -131,7 +131,7 @@
       $saiki = date('Y-m-d');
       $page = trim(@$_GET['page']) == ''? 1 : $_GET['page'];
       $offset = ($page*2);
-      $dataTamuBaru = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai ";
+      $dataTamuBaru = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_status ='2' and tgl_datang = '$saiki'  ";
 
       //$mynewpo = "select * from cera_sales JOIN cera_client ON cera_sales.sales_id_client=cera_client.id_client JOIN cera_sales_item ON cera_sales_item.si_sales_id = cera_sales.sales_id JOIN cera_product ON cera_product.id_product = cera_sales_item.si_product_id where sales_id_status='1' order by sales_quotation_no desc";
 
