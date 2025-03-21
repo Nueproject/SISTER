@@ -21,7 +21,7 @@
 		$keterangan = $_SESSION['formTambahBaru']['keterangan'];
 		$status = "1";
 		$tgl_datang = date('Y-m-d');
-		$idtgl = date('dmY');
+		$idtgl = date('Ydm');
 		$nambid = "select nama_bidang from data_bidang where id_bidang= '$bidang'";
 		$maxid = "select max(id_pelayanan) AS idpelayanan from data_pelayanan";
 		$querymax = mysqli_query($koneksi, $maxid);
@@ -39,7 +39,7 @@
 		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
 		while ($rowbid = $kobid2->fetch_assoc()) {
 			$kodebid=$rowbid['kode'];
-		$kode_pel = "$kodebid$idtgl$newid";
+		$kode_pel = "$bidang$idtgl$newid";
 
 		$cekdata="select * from data_tamu where nip_tamu='$nip'";
 		$ada= mysqli_query($koneksi, $cekdata) or die(mysqli_error($koneksi));
