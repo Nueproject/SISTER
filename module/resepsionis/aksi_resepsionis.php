@@ -39,7 +39,7 @@
 		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
 		while ($rowbid = $kobid2->fetch_assoc()) {
 			$kodebid=$rowbid['kode'];
-		$kode_pel = "$kodebid-$idtgl-0$newid";
+		$kode_pel = "$kodebid$idtgl$newid";
 
 		$cekdata="select * from data_tamu where nip_tamu='$nip'";
 		$ada= mysqli_query($koneksi, $cekdata) or die(mysqli_error($koneksi));
@@ -149,6 +149,45 @@
         header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 		}
+
+	//AKSI_SETAS_TAMU	
+	if(isset($_POST['setasDataTamu'])){
+
+		
+		$_SESSION['formDataSet'] = $_POST;
+		$id_tamu = $_POST['idTamu'];
+		$kode_tamu = $_POST['kodeTamu'];
+		$nama = $_POST['nama'];
+		$nip = $_POST['nip'];
+		$instansi =$_POST['instansiUpdate'];
+		$bidang = $_POST['bidangUpdate'];
+		$keperluan = $_POST['keperluan'];
+		$keterangan = $_POST['keterangan'];
+		$pegawai = $_POST['pegawai'];
+		$status = $_POST['status'];
+		$tgl_datang = date('Y-m-d'); 
+		$idtgl = date('dYm');
+		$nambid = "select nama_bidang from data_bidang where id= '$bidang'";
+		
+		
+		date_default_timezone_set('Asia/Jakarta');		
+
+		$kobid = "select left(nama_bidang, 2) as kode from data_bidang where id_bidang = 2";
+		$kobid2= mysqli_query($koneksi, $kobid) or die(mysqli_error($koneksi));
+		
+
+		$updateDataTamu = mysqli_query($koneksi, "update data_pelayanan SET 
+				
+				status='".$status."', 
+				id_pegawai='".$pegawai."'
+				where id_pelayanan =" .$id_tamu) or die(mysqli_error($koneksi));
+
+		 unset($_SESSION['formDataSet']);
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+		}
+
 
 	
 	//Aksi Duplicate Tami	

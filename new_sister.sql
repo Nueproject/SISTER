@@ -182,7 +182,7 @@ INSERT INTO `telepon` (`id_telepon`, `lokasi`, `nomor`) VALUES
 
 CREATE TABLE `data_pelayanan` (
   `id_pelayanan` int(9) NOT NULL,
-  `kode_pelayanan` varchar(6) NOT NULL,
+  `kode_pelayanan` varchar(15) NOT NULL,
   `id_tamu` int(9) NOT NULL,
   `id_bidang` int(1) DEFAULT NULL,
   `keperluan` varchar(100) DEFAULT NULL,

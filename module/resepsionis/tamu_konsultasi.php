@@ -7,9 +7,10 @@
         <br>
         <!-- <h3 class="box-title">Tamu Baru</h3>
         <br> -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahTamuBaru" data-whatever="@mdo">Tambah Tamu Baru</button>
+   
+   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahTamuBaru_konsul" data-whatever="@mdo">Tambah Tamu Baru</button>
 
-<div class="modal fade bd-example-modal-lg" id="tambahTamuBaru" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+   <div class="modal fade bd-example-modal-lg" id="tambahTamuBaru_konsul" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -98,6 +99,8 @@
 </div>
         <!-- end modal for tambah -->
 
+
+
         <!-- BOX TOOLS -->
         <div class="box-tools">
           <form role="search" method="POST" action="adminweb.php?module=search">
@@ -123,7 +126,6 @@
             <th>Keperluan</th>
             <th>Keterangan</th>
             <th>Status</th>
-            <th>tgl Kunjungan</th>
             <th>jam Kunjungan</th>
             <th style="width: 110px">Aksi</th>
           </tr>
@@ -149,7 +151,6 @@
             <td><?php echo $pro['keperluan']; ?></td>
             <td><?php echo $pro['keterangan']; ?></td>
             <td><?php echo $pro['nama_status']; ?></td>
-            <td><?php echo $pro['tgl_datang']; ?></td>
             <td><?php echo $pro['jam_datang']; ?></td>
             <td>
 
@@ -166,7 +167,7 @@
                     <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#modal<?php echo $pro['id_pelayanan'];?>">Detail</a></li>
                     <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#duplicate<?php echo $pro['id_pelayanan'];?>" >Duplicate</a></li>
                     <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#edit<?php echo $pro['id_pelayanan'];?>" >Edit</a></li>
-                    <li><a class="dropdown-item" data-toggle="modal" data-target="#edit<?php echo $pro['id_pelayanan'];?>" data-whatever="@mdo">Set as DiLayani</a></li>
+                    <li><a class="dropdown-item" data-toggle="modal" data-target="#setas<?php echo $pro['id_pelayanan'];?>" data-whatever="@mdo">Set as DiLayani</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="module/resepsionis/aksi_hapus.php?id_tamu=<?php echo $pro['id_pelayanan'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">Delete</a></li>
                   </ul>
@@ -181,104 +182,12 @@
       <!--  END FORM TABLE -->
 
 
-      <!--  TAMBAH BARU -->
-      <!--  END TAMBAH BARU -->
         <?php
       $kueriQuo= mysqli_query($koneksi, $dataTamuBaru);
       while($pro=mysqli_fetch_array($kueriQuo)){
         ?>
 
-        <!-- Modal for Edit Tamu Baru -->
-
-
-<div class="modal fade" id="edit<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content modal-lg">
-      <form action="module/resepsionis/aksi_resepsionis.php" method="post">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Edit Data Tamu #<?php echo $pro['kode_pelayanan'];?></h4>
-      </div>
-
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">                    
-                <?php $tgl_skrg = date("dmY"); ?>
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Nama</label>
-                  <input type="text" class="form-control" id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
-                  <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
-                  <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
-                </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">NIP</label>
-                  <input type="text" class="form-control" id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nip" placeholder="NIP Tamu">
-                </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Instansi</label>
-                  <select class="form-control" id="instansi" name="instansiUpdate">
-                  <?php $default = $pro['nama_instansi']; ?>
-                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
-                             <?php
-                              $products = mysqli_query($koneksi,"select * from data_instansi");
-                              while($p=mysqli_fetch_array($products)){                          
-                             ?>
-                                <option value="<?php echo $p['nama_instansi']; ?>"> <?php echo $p['nama_instansi']; ?></option>
-                            <?php } ?>
-                  </select>
-
-                </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Bidang</label>
-                  <select class="form-control" id="instansi" name="bidangUpdate">
-                  <?php $default = $pro['instansi']; ?>
-                    <option value="<?php echo $pro['id_bidang']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
-                             <?php
-                              $products = mysqli_query($koneksi,"select * from data_bidang");
-                              while($p=mysqli_fetch_array($products)){                          
-                             ?>
-                                <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
-                            <?php } ?>
-                  </select>
-                </div>               
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Keperluan</label>
-                  <input type="text" class="form-control" id="keperluan" value="<?php echo $pro['keperluan']?>" name="keperluan" placeholder="Keperluan">
-                </div>  
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Keterangan</label>
-                  <input type="text" class="form-control" id="keterangan" value="<?php echo $pro['keterangan']?>" name="keterangan" placeholder="Keterangan">
-                </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="control-label">status</label>
-                  <select class="form-control" id="instansi" name="status">
-                  <?php $default = $pro['instansi']; ?>
-                    <option value="<?php echo $pro['id_status']; ?>"> <?php echo $pro['nama_status']; ?></option>
-                             <?php
-                              $products = mysqli_query($koneksi,"select * from status");
-                              while($p=mysqli_fetch_array($products)){                          
-                             ?>
-                                <option value="<?php echo $p['id_status']; ?>"> <?php echo $p['nama_status']; ?></option>
-                            <?php } ?>
-                  </select>
-                </div>                
-              </div>
-              
-            </div>
-          </div> <!--end modal body -->
-            <div class="modal-footer">
-            <button type="submit" name="editDataTamu" class="btn btn-primary">Update</button>
-            </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- End for edit tamu baru -->
-
-
-<!-- Modal View Detail -->
+       <!-- Modal View Detail -->
 
  <!-- Modal -->
  <div class="modal fade" id="modal<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -331,24 +240,30 @@
                               <td>: </td>
                               <td><?php echo $ew['nama_status'];?></td>
                             </tr>
-                            <?php } ?>
+                            <tr>
+                              <td>Yang Menerima</td>
+                              <td>: </td>
+                              <td><?php echo $ew['nama_pegawai'];?></td>
+                            </tr>
+                            
                           </table>
                         </div>
 
                         <div class="modal-footer">
+                        <a href="module/resepsionis/cetak_kartu.php?idtamu=<?php echo $ew['id_pelayanan'];?>">
                           <button type="button" class="btn btn-primary">Print</button>
-                        </div>
+                        </a>
+                        </div><?php } ?>
                      </div>
                     </div>
                 </div>
 
 <!-- End Modal View Detal -->
 
-
 <!-- Modal for Duplicate Tamu Baru -->
 
 
-<div class="modal fade" id="duplicate<?php echo $pro['kode_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="duplicate<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-lg">
       <form action="module/resepsionis/aksi_resepsionis.php" method="post">
@@ -371,6 +286,7 @@
                   <label for="inputEmail3" class="control-label">NIP</label>
                   <input type="text" class="form-control" disabled id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nipCopy" placeholder="NIP Tamu">
                   <input type="hidden" value="<?php echo $pro['nip_tamu'];?>" name="nip_copy" placeholder="Instansi">
+                  <input type="hidden" value="<?php echo $pro['id_tamu'];?>" name="id_tamu" placeholder="Tamu">
                   
                 </div>
 
@@ -383,12 +299,12 @@
                   <label for="inputEmail3" class="control-label">Bidang</label>
                   <select class="form-control" id="instansi" name="bidangCopy">
                   <?php $default = $pro['nama_instansi']; ?>
-                    <option value="<?php echo $pro['id']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
+                    <option value="<?php echo $pro['id_bidang']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
                              <?php
                               $products = mysqli_query($koneksi,"select * from data_bidang");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
-                                <option value="<?php echo $p['id']; ?>"> <?php echo $p['nama_bidang']; ?></option>
+                                <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
                             <?php } ?>
                   </select>
                 </div>               
@@ -413,6 +329,191 @@
   </div>
 </div>
 <!-- End for Duplicate tamu baru -->
+
+ <!-- Modal for Edit Tamu Baru -->
+
+
+<div class="modal fade" id="edit<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-lg">
+      <form action="module/resepsionis/aksi_resepsionis.php" method="post">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Edit Data Tamu #<?php echo $pro['kode_pelayanan'];?></h4>
+      </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">                    
+                <?php $tgl_skrg = date("dmY"); ?>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Nama</label>
+                  <input type="text" class="form-control" id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
+                  <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
+                  <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">NIP</label>
+                  <input type="text" class="form-control" id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nip" placeholder="NIP Tamu">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <select class="form-control" id="instansi" name="instansiUpdate">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from data_instansi");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_instansi']; ?>"> <?php echo $p['nama_instansi']; ?></option>
+                            <?php } ?>
+                  </select>
+
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Bidang</label>
+                  <select class="form-control" id="instansi" name="bidangUpdate">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from data_bidang");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
+                            <?php } ?>
+                  </select>
+                </div>               
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Keperluan</label>
+                  <input type="text" class="form-control" id="keperluan" value="<?php echo $pro['keperluan']?>" name="keperluan" placeholder="Keperluan">
+                </div>  
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Keterangan</label>
+                  <input type="text" class="form-control" id="keterangan" value="<?php echo $pro['keterangan']?>" name="keterangan" placeholder="Keterangan">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">status</label>
+                  <select class="form-control" id="instansi" name="status">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_status']; ?>"> <?php echo $pro['nama_status']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from status");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_status']; ?>"> <?php echo $p['nama_status']; ?></option>
+                            <?php } ?>
+                  </select>
+                </div>                
+              </div>
+              
+            </div>
+          </div> <!--end modal body -->
+            <div class="modal-footer">
+            <button type="submit" name="editDataTamu" class="btn btn-primary">Update</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End for edit tamu baru -->
+
+<!-- Modal for SET AS -->
+
+
+<div class="modal fade" id="setas<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-lg">
+      <form action="module/resepsionis/aksi_resepsionis.php" method="post">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Proses #<?php echo $pro['kode_pelayanan'];?></h4>
+      </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">                    
+                <?php $tgl_skrg = date("dmY"); ?>
+                <div class="form-group">
+                
+                  <label for="inputEmail3" class="control-label">Nama</label>
+                  <input type="text" class="form-control" disabled id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
+                  <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
+                  <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
+                </div>
+               
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <select class="form-control" disabled id="instansi" name="instansiUpdate">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from data_instansi");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_instansi']; ?>"> <?php echo $p['nama_instansi']; ?></option>
+                            <?php } ?>
+                  </select>
+
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Bidang</label>
+                  <select class="form-control" disabled id="instansi" name="bidangUpdate">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from data_bidang");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
+                            <?php } ?>
+                  </select>
+                </div>               
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Keperluan</label>
+                  <input type="text" class="form-control" disabled id="keperluan" value="<?php echo $pro['keperluan']?>" name="keperluan" placeholder="Keperluan">
+                </div>  
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">status</label>
+                  <select class="form-control" id="instansi" name="status">
+                  <?php $default = $pro['nama_instansi']; ?>
+                    <option value="<?php echo $pro['id_status']; ?>"> <?php echo $pro['nama_status']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from status");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_status']; ?>"> <?php echo $p['nama_status']; ?></option>
+                            <?php } ?>
+                  </select>
+                </div>   
+                <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Pegawai</label>
+                  <select class="form-control" id="pegawai" name="pegawai">
+                  <?php $default = $pro['nama_pegawai']; ?>
+                    <option value="<?php echo $pro['id_pegawai']; ?>"> <?php echo $pro['nama_pegawai']; ?></option>
+                             <?php
+                              $products = mysqli_query($koneksi,"select * from data_pegawai");
+                              while($p=mysqli_fetch_array($products)){                          
+                             ?>
+                                <option value="<?php echo $p['id_pegawai']; ?>"> <?php echo $p['nama_pegawai']; ?></option>
+                            <?php } ?>
+                  </select>
+                </div>                
+              </div>
+              
+            </div>
+          </div> <!--end modal body -->
+            <div class="modal-footer">
+            <button type="submit" name="setasDataTamu" class="btn btn-primary">Proses</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End for SET AS -->
 
 
   <?php }; ?>
