@@ -216,9 +216,14 @@
                               <td><?php echo $ew['nip_tamu'];?></td>
                             </tr>
                             <tr>
-                              <td>Instansi</td>
+                              <td>Wilayah</td>
                               <td>: </td>
                               <td><?php echo $ew['nama_instansi'];?></td>
+                            </tr>
+                            <tr>
+                              <td>Instansi</td>
+                              <td>: </td>
+                              <td><?php echo $ew['ket_instansi'];?></td>
                             </tr>
                             <tr>
                               <td>Bidang tujuan</td>
@@ -352,6 +357,7 @@
                   <label for="inputEmail3" class="control-label">Nama</label>
                   <input type="text" class="form-control" id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
                   <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
+                  <input type="hidden" value="<?php echo $pro['id_tamu'];?>" name="idNeTamu" placeholder="Id Tamu">
                   <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
                 </div>
                 <div class="form-group">
@@ -359,7 +365,7 @@
                   <input type="text" class="form-control" id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nip" placeholder="NIP Tamu">
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <label for="inputEmail3" class="control-label">Wilayah</label>
                   <select class="form-control" id="instansi" name="instansiUpdate">
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
@@ -371,6 +377,10 @@
                             <?php } ?>
                   </select>
 
+                </div>
+                 <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <input type="text" class="form-control" id="ketInstansiUpdate" value="<?php echo $pro['ket_instansi'];?>" name="ket_instansi" placeholder="Instansi">
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Bidang</label>
@@ -418,6 +428,7 @@
   </div>
 </div>
 <!-- End for edit tamu baru -->
+
 
 <!-- Modal for SET AS -->
 
@@ -514,6 +525,7 @@
   </div>
 </div>
 <!-- End for SET AS -->
+
 
 
   <?php }; ?>

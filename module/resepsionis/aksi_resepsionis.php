@@ -16,6 +16,7 @@
 		$nip = $_SESSION['formTambahBaru']['nip'];
 		$nohp = $_SESSION['formTambahBaru']['noHp'];
 		$instansi = $_SESSION['formTambahBaru']['namaInstansi'];
+		$ket_instansi = $_SESSION['formTambahBaru']['ketInstansi'];
 		$bidang = $_SESSION['formTambahBaru']['bidang'];
 		$keperluan = $_SESSION['formTambahBaru']['keperluan'];
 		$keterangan = $_SESSION['formTambahBaru']['keterangan'];
@@ -64,7 +65,7 @@
 		else
 		{
 		
-			$simpantamu = mysqli_query($koneksi, "insert into data_tamu (id_tamu, nip_tamu, nama_tamu, no_hp, instansi) values ('$newid_tamu', '$nip', '$nama', '$nohp', '$instansi')") or die(mysqli_error($koneksi));
+			$simpantamu = mysqli_query($koneksi, "insert into data_tamu (id_tamu, nip_tamu, nama_tamu, no_hp, instansi, ket_instansi) values ('$newid_tamu', '$nip', '$nama', '$nohp', '$instansi', '$ket_instansi')") or die(mysqli_error($koneksi));
 			$simpantamuinstansi = mysqli_query($koneksi, "insert into data_pelayanan (id_pelayanan, kode_pelayanan, id_tamu, id_bidang, keperluan, keterangan, status, tgl_datang, jam_datang, id_pegawai) values ('$newid', '$kode_pel','$newid_tamu','$bidang', '$keperluan', '$keterangan', '$status', '$tgl_datang', CURRENT_TIME(), '1')") or die(mysqli_error($koneksi));
 	
 		//mysqli_query($koneksi) or die("Gagal menyimpan data karena :").mysqli_error();
@@ -108,10 +109,12 @@
 		
 		$_SESSION['formDataUpdate'] = $_POST;
 		$id_tamu = $_POST['idTamu'];
+		$idnetamu = $_POST['idNeTamu'];
 		$kode_tamu = $_POST['kodeTamu'];
 		$nama = $_POST['nama'];
 		$nip = $_POST['nip'];
 		$instansi =$_POST['instansiUpdate'];
+		$ket_instansi =$_POST['ket_instansi'];
 		$bidang = $_POST['bidangUpdate'];
 		$keperluan = $_POST['keperluan'];
 		$keterangan = $_POST['keterangan'];
@@ -119,7 +122,6 @@
 		$tgl_datang = date('Y-m-d'); 
 		$idtgl = date('dYm');
 		$nambid = "select nama_bidang from data_bidang where id= '$bidang'";
-		
 		
 		date_default_timezone_set('Asia/Jakarta');		
 
@@ -131,8 +133,9 @@
 		$updateTamu = mysqli_query($koneksi, "update data_tamu SET
 				nip_tamu='".$nip."',
 				nama_tamu='".$nama."',
-				instansi='".$instansi."'
-				where nip_tamu = ".$nip) or die(mysqli_error($koneksi));
+				instansi='".$instansi."',
+				ket_instansi='".$ket_instansi."'
+				where id_tamu =".$idnetamu) or die(mysqli_error($koneksi));
 
 		$updateDataTamu = mysqli_query($koneksi, "update data_pelayanan SET 
 				id_pelayanan='".$id_tamu."', 

@@ -106,7 +106,7 @@ echo'
     </tr>    
     <tr><td width="150px">&emsp; Instansi</td>
         
-        <td width="200px">'.$pro['nama_instansi'].'</td>
+        <td width="200px">'.$pro['nama_instansi'].' || '.$pro['ket_instansi'].'</td>
     </tr>    
     <tr><td width="150px">&emsp; Bidang</td>
         
@@ -116,16 +116,13 @@ echo'
         
         <td width="200px">'.$pro['keperluan'].'</td>
     </tr>    
-    <tr><td border="0" width="150px">&emsp; Keterangan</td>
-       
-        <td width="200px">'.$pro['keterangan'].'</td>
-    </tr>
+    
     ';
  }; ?>
 </table>
 <br>
 
-<table>
+<table border='0' width="80%" align="center">
     <?php
     $dataTamu = "select * from data_pelayanan dp join data_tamu dt on dp.id_tamu = dt.id_tamu join data_bidang db on dp.id_bidang = db.id_bidang join status s on dp.status = s.id_status join data_instansi di on dt.instansi = di.id_instansi join data_pegawai p on dp.id_pegawai = p.id_pegawai where id_pelayanan =$kode";
     $kueriQuo= mysqli_query($koneksi, $dataTamu);
@@ -137,19 +134,19 @@ echo'
     $sekarang = strftime('%d %B %Y', $tgl->getTimestamp()) . '<br>';
     echo'
     <tr>
-        <td width="200px">  </td>
-        <td width="60px"> </td>
-        <td>Yogyakarta, '.$sekarang.' </td>
+        <td width="35%">  </td>
+        <td width="20%"> </td>
+        <td width="45%">Yogyakarta, '.$sekarang.' </td>
     </tr>
     '; 
         };?>
 </table>
-<table>
+<table border="0" align="center" width="80%">
     <tr>
-        <td width="60px"> </td>
-        <td><b>Tamu</b></td>
-        <td width="250px"></td>
-        <td><b>Resepsionis</b></td>
+        <td width="5%"> </td>
+        <td width="30%"><b>Tamu</b></td>
+        <td width="30%"></td>
+        <td width="35%"><b>Resepsionis</b></td>
     </tr>   
 </table>
 <br><br><br>
@@ -159,33 +156,33 @@ $kueriQuo= mysqli_query($koneksi, $dataTamu);
 	while($pro=mysqli_fetch_array($kueriQuo)){ 
 
 echo'
-<table border="0">
+<table width="80%" align="center">
 <tr>
-        <td width="20px"> </td>
-        <td><center><b>( '.$pro['nama_tamu'].' )</b></center></td>
-        <td width="150px"></td>
-        <td><b>( '.$user.' )</b></td>
+        <td width="5%""> </td>
+        <td width="30%"><center><b>( '.$pro['nama_tamu'].' )</b></center></td>
+        <td width="30%""></td>
+        <td width="35%"><center><b>( '.$user.' )</b></center></td>
     </tr>
 </table>';
     }; ?>
 
 <br>
-<table>
+<table width="80%" align="center">
     <tr>
-        <td width="230px"> </td>
-        <td width="100px"><b> Petugas </b></td>
-        <td width="100px"></td>
+        <td width="30%"> </td>
+        <td width="40%"><center><b> Petugas </b></center></td>
+        <td width="30%"></td>
         
     </tr>
 </table>
 <br>
 <br>
 <br>
-<table>
+<table width="80%" align="center">
     <tr>
-        <td width="175px"> </td>
-        <td width="100px"><b> (......................................) </b></td>
-        <td width="100px"></td>
+        <td width="30%"> </td>
+        <td width="40%"><center><b> (............................................) </center></b></td>
+        <td width="30%"></td>
         
     </tr>
 </table>

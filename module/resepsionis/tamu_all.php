@@ -165,9 +165,9 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#modalall<?php echo $pro['id_pelayanan'];?>">Detail</a></li>
-                    <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#duplicate<?php echo $pro['id_pelayanan'];?>" >Duplicate</a></li>
-                    <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#edit<?php echo $pro['id_pelayanan'];?>" >Edit</a></li>
-                    <li><a class="dropdown-item" data-toggle="modal" data-target="#setas<?php echo $pro['id_pelayanan'];?>" data-whatever="@mdo">Set as DiLayani</a></li>
+                    <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#duplicateall<?php echo $pro['id_pelayanan'];?>" >Duplicate</a></li>
+                    <li><a class="dropdown-item" href="javascript::void(0)" data-toggle="modal" data-target="#editall<?php echo $pro['id_pelayanan'];?>" >Edit</a></li>
+                    <li><a class="dropdown-item" data-toggle="modal" data-target="#setasall<?php echo $pro['id_pelayanan'];?>" data-whatever="@mdo">Set as DiLayani</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="module/resepsionis/aksi_hapus.php?id_tamu=<?php echo $pro['id_pelayanan'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">Delete</a></li>
                   </ul>
@@ -187,7 +187,7 @@
       while($pro=mysqli_fetch_array($kueriQuo)){
         ?>
 
-       <!-- Modal View Detail -->
+      <!-- Modal View Detail -->
 
  <!-- Modal -->
  <div class="modal fade" id="modalall<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -216,9 +216,14 @@
                               <td><?php echo $ew['nip_tamu'];?></td>
                             </tr>
                             <tr>
-                              <td>Instansi</td>
+                              <td>Wilayah</td>
                               <td>: </td>
                               <td><?php echo $ew['nama_instansi'];?></td>
+                            </tr>
+                            <tr>
+                              <td>Instansi</td>
+                              <td>: </td>
+                              <td><?php echo $ew['ket_instansi'];?></td>
                             </tr>
                             <tr>
                               <td>Bidang tujuan</td>
@@ -263,7 +268,7 @@
 <!-- Modal for Duplicate Tamu Baru -->
 
 
-<div class="modal fade" id="duplicate<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="duplicateall<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-lg">
       <form action="module/resepsionis/aksi_resepsionis.php" method="post">
@@ -333,7 +338,7 @@
  <!-- Modal for Edit Tamu Baru -->
 
 
-<div class="modal fade" id="edit<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="editall<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-lg">
       <form action="module/resepsionis/aksi_resepsionis.php" method="post">
@@ -352,6 +357,7 @@
                   <label for="inputEmail3" class="control-label">Nama</label>
                   <input type="text" class="form-control" id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
                   <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
+                  <input type="hidden" value="<?php echo $pro['id_tamu'];?>" name="idNeTamu" placeholder="Id Tamu">
                   <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
                 </div>
                 <div class="form-group">
@@ -359,7 +365,7 @@
                   <input type="text" class="form-control" id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nip" placeholder="NIP Tamu">
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <label for="inputEmail3" class="control-label">Wilayah</label>
                   <select class="form-control" id="instansi" name="instansiUpdate">
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
@@ -371,6 +377,10 @@
                             <?php } ?>
                   </select>
 
+                </div>
+                 <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <input type="text" class="form-control" id="ketInstansiUpdate" value="<?php echo $pro['ket_instansi'];?>" name="ket_instansi" placeholder="Instansi">
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Bidang</label>
@@ -422,7 +432,7 @@
 <!-- Modal for SET AS -->
 
 
-<div class="modal fade" id="setas<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="setasall<?php echo $pro['id_pelayanan'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-lg">
       <form action="module/resepsionis/aksi_resepsionis.php" method="post">

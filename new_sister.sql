@@ -64,11 +64,13 @@ CREATE TABLE `data_tamu` (
   `nip_tamu` char(18) DEFAULT NULL,
   `nama_tamu` varchar(100) NOT NULL,
   `no_hp` varchar(100) DEFAULT NULL,
-  `instansi` int(3) NOT NULL
+  `instansi` int(3) NOT NULL,
+  `ket_instansi` varchar (50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `data_tamu` (`id_tamu`, `nip_tamu`, `nama_tamu`, `no_hp`, `instansi`) VALUES
-('1', '1995122020251003', 'Dimas Dwi Nugroho', '082135225590', '1' );
+
+INSERT INTO `data_tamu` (`id_tamu`, `nip_tamu`, `nama_tamu`, `no_hp`, `instansi`, `ket_instansi`) VALUES
+('1', '1995122020251003', 'Dimas Dwi Nugroho', '082135225590', '1', 'BKD' );
 -- --------------------------------------------------------------
 
 CREATE TABLE `data_bidang` (

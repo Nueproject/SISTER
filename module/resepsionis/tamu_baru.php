@@ -37,7 +37,7 @@
             </div> 
             
             <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Instansi :</label>
+            <label for="recipient-name" class="col-form-label">Wilayah :</label>
             <select class="form-control" id="namaInstansi" name="namaInstansi" required>
                   <option selected>Pilih Instansi</option>
                       <?php 
@@ -51,6 +51,11 @@
                       ?>
                 </select>
                 <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>
+
+            <div class="form-group">
+              <label for="recipient-name" class="control-label">Instansi :</label>
+              <input type="text" class="form-control" id="namalengkap" value="<?php echo @$_SESSION['formTambahBaru']['ketInstansi']; ?>" name="ketInstansi" placeholder="Nama Instansi">
             </div>
      
        
@@ -117,12 +122,11 @@
           <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>NIP</th>
+            <th>Wilayah</th>
             <th>Instansi</th>
             <th>Bidang</th>
             <th>Keperluan</th>
-            <th>Keterangan</th>
-            <th>Status</th>
+            <th>keterangan</th>
             <th>jam Kunjungan</th>
             <th style="width: 110px">Aksi</th>
           </tr>
@@ -142,12 +146,11 @@
           <tr>
             <td><?php echo $no; ?></td>
             <td><?php echo $pro['nama_tamu']; ?></td>
-            <td><?php echo $pro['nip_tamu']; ?></td>
             <td><?php echo $pro['nama_instansi']; ?></td>
+            <td><?php echo $pro['ket_instansi']; ?></td>
             <td><?php echo $pro['nama_bidang']; ?></td>
             <td><?php echo $pro['keperluan']; ?></td>
             <td><?php echo $pro['keterangan']; ?></td>
-            <td><?php echo $pro['nama_status']; ?></td>
             <td><?php echo $pro['jam_datang']; ?></td>
             <td>
 
@@ -217,9 +220,14 @@
                               <td><?php echo $ew['nip_tamu'];?></td>
                             </tr>
                             <tr>
-                              <td>Instansi</td>
+                              <td>Wilayah</td>
                               <td>: </td>
                               <td><?php echo $ew['nama_instansi'];?></td>
+                            </tr>
+                            <tr>
+                              <td>Instansi</td>
+                              <td>: </td>
+                              <td><?php echo $ew['ket_instansi'];?></td>
                             </tr>
                             <tr>
                               <td>Bidang tujuan</td>
@@ -353,6 +361,7 @@
                   <label for="inputEmail3" class="control-label">Nama</label>
                   <input type="text" class="form-control" id="idTamuInstansi" value="<?php echo $pro['nama_tamu'];?>" name="nama" placeholder="Nama">
                   <input type="hidden" value="<?php echo $pro['id_pelayanan'];?>" name="idTamu" placeholder="Id Tamu">
+                  <input type="hidden" value="<?php echo $pro['id_tamu'];?>" name="idNeTamu" placeholder="Id Tamu">
                   <input type="hidden" value="<?php echo $pro['kode_pelayanan'];?>" name="kodeTamu" placeholder="kode Tamu">
                 </div>
                 <div class="form-group">
@@ -360,7 +369,7 @@
                   <input type="text" class="form-control" id="namaClient" value="<?php echo $pro['nip_tamu'];?>" name="nip" placeholder="NIP Tamu">
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <label for="inputEmail3" class="control-label">Wilayah</label>
                   <select class="form-control" id="instansi" name="instansiUpdate">
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
@@ -372,6 +381,10 @@
                             <?php } ?>
                   </select>
 
+                </div>
+                 <div class="form-group">
+                  <label for="inputEmail3" class="control-label">Instansi</label>
+                  <input type="text" class="form-control" id="ketInstansiUpdate" value="<?php echo $pro['ket_instansi'];?>" name="ket_instansi" placeholder="Instansi">
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Bidang</label>
