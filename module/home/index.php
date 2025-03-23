@@ -42,15 +42,15 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           <a href="adminweb.php?module=resepsionis"><button type="button" class="btn btn-outline-success">BUKU TAMU</button></a>
                     </div>
                     <div class="col container form-control">
-                       <a href="adminweb.php?module=home"> <img src="img/assets/button/status.png" class="image"></a> 
+                       <a href="adminweb.php?module=home"> <img src="img/assets/button/setup.png" class="image"></a> 
                           <br> 
-                       <button type="button" class="btn btn-outline-success">STATUS</button>
+                       <button type="button" class="btn btn-outline-success">SETUP</button>
                     </div>
                   </div>
                   <!-- BARIS 2 -->
                   <div class="row"> 
                     <div class="col container form-control">
-                          <a href="adminweb.php?module=home"> <img src="img/assets/button/pns.png" class="image"></a> 
+                          <a href="adminweb.php?module=pegawai"> <img src="img/assets/button/pns.png" class="image"></a> 
                           <br> 
                           <button type="button" class="btn btn-outline-success">DATA PNS</button>
                     </div>

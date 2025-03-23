@@ -161,6 +161,14 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 						<li>
 							<a class="dropdown-item" href="adminweb.php?module=resepsionis"> <i class="fa fa-shopping-cart"></i> <span>Resepsionis</span> </a>
 						</li>
+
+						<li>
+							<a class="dropdown-item" href="adminweb.php?module=setup"> <i class="fa fa-shopping-cart"></i> <span>Setup</span> </a>
+						</li>
+
+						<li>
+							<a class="dropdown-item" href="adminweb.php?module=pegawai"> <i class="fa fa-shopping-cart"></i> <span>Data PNS</span> </a>
+						</li>
 						
          	 			<li>
 							<a class="dropdown-item" href="adminweb.php?module=barcode"> <i class="fa fa-male"></i> <span>Admin</span> </a>
@@ -184,10 +192,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
                 include "module/resepsionis/index.php";
             } elseif ($_GET['module'] == 'search') {
                 include "module/resepsionis/form_cari.php";
-            } elseif ($_GET['module'] == 'edit_kategori') {
-                include "module/marketing_sales/form_edit.php";
-            } elseif ($_GET['module'] == 'simpan_user') {
-                include "module/marketing_sales/aksi_simpan.php";
+            } elseif ($_GET['module'] == 'cari_pegawai') {
+                include "module/pegawai/form_cari.php";
+            } elseif ($_GET['module'] == 'setup') {
+                include "odule/setup/index.php";
+            } elseif ($_GET['module'] == 'pegawai') {
+                include "module/pegawai/index.php";
             } elseif ($_GET['module'] == 'barcode') {
                 include "module/resepsionis/barcode.php";				
 			} elseif ($_GET['module'] == 'hapus_user') {
