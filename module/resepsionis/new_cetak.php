@@ -106,46 +106,48 @@ $kueriQuo= mysqli_query($koneksi, $dataTamu);
         // $product = $_POST['product'];
         // $product_id = $_POST['product_id'];
         // $rate = $_POST['rate'];
-        $angka = $pro['kode_pelayanan'];
-       
+        $angka = "201295";
+
+            echo "<p class='inline'>".bar128(stripcslashes($angka))."</p>&nbsp&nbsp&nbsp&nbsp";
+        
 
         ?>
-        <table border="0" width="80%" align="center">
-<tr>
-<td width="70%"></td>
-<td width="30%">'<?php echo " <p class='inline'>".bar128(stripcslashes($angka))."</p>&nbsp&nbsp&nbsp&nbsp"?> </td>
-</tr>
-</table>
     </div>
 
   
 <?php
 echo'
 
+<table border="0" width="80%" align="center">
+<tr>
+<td width="70%"></td>
+<td width="30%">'.$pro['kode_pelayanan'].'</td>
+</tr>
+</table>
 
 
 
 <table border="1" width="80%" align="center">
     <tr>
-        <td width="30%" style="padding-left: 10px;">Nama &emsp; </td>
+        <td width="150px">&emsp; Nama &emsp; &emsp; &emsp; &emsp; : </td>
         
-        <td width="70%" style="padding-left: 10px;">'.$pro['nama_tamu'].'</td>
+        <td width="200px">'.$pro['nama_tamu'].'</td>
     </tr>
-    <tr><td width="30%" style="padding-left: 10px;">NIP</td>
+    <tr><td width="150px">&emsp; NIP</td>
        
-        <td width="70%"style="padding-left: 10px;">'.$pro['nip_tamu'].'</td>
+        <td width="200px">'.$pro['nip_tamu'].'</td>
     </tr>    
-    <tr><td width="30%" style="padding-left: 10px;">Instansi</td>
+    <tr><td width="150px">&emsp; Instansi</td>
         
-        <td width="70%"  style="padding-left: 10px;">'.$pro['nama_instansi'].' || '.$pro['ket_instansi'].'</td>
+        <td width="200px">'.$pro['nama_instansi'].' || '.$pro['ket_instansi'].'</td>
     </tr>    
-    <tr><td width="30%" style="padding-left: 10px;">Bidang</td>
+    <tr><td width="150px">&emsp; Bidang</td>
         
-        <td width="70%" style="padding-left: 10px;">'.$pro['nama_bidang'].'</td>
+        <td width="200px">'.$pro['nama_bidang'].'</td>
     </tr>
-    <tr><td width="30%" style="padding-left: 10px;">Keperluan</td>
+    <tr><td width="150px">&emsp; Keperluan</td>
         
-        <td width="70%" style="padding-left: 10px;">'.$pro['keperluan'].'</td>
+        <td width="200px">'.$pro['keperluan'].'</td>
     </tr>    
     
     ';
@@ -175,9 +177,9 @@ echo'
 <table border="0" align="center" width="80%">
     <tr>
         <td width="5%"> </td>
-        <td width="30%"><center><b>Tamu</b></center></td>
+        <td width="30%"><b>Tamu</b></td>
         <td width="30%"></td>
-        <td width="35%"><center><b>Resepsionis</b></center></td>
+        <td width="35%"><b>Resepsionis</b></td>
     </tr>   
 </table>
 <br><br><br>

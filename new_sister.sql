@@ -65,7 +65,7 @@ CREATE TABLE `data_tamu` (
   `nama_tamu` varchar(100) NOT NULL,
   `no_hp` varchar(100) DEFAULT NULL,
   `instansi` int(3) NOT NULL,
-  `ket_instansi` varchar (50) NOT NULL
+  `ket_instansi` varchar (100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

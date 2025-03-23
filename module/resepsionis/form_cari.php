@@ -169,8 +169,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <th>Instansi</th>
             <th>Bidang</th>
             <th>Keperluan</th>
-            <th>Status</th>
-            <th>jam Kunjungan</th>
             <th style="width: 110px">Aksi</th>
           </tr>
 			<?php
@@ -196,8 +194,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <td><?php echo $pro['ket_instansi']; ?></td>
             <td><?php echo $pro['nama_bidang']; ?></td>
             <td><?php echo $pro['keperluan']; ?></td>
-            <td><?php echo $pro['nama_status']; ?></td>
-            <td><?php echo $pro['jam_datang']; ?></td>
             <td>
 
 

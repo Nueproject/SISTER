@@ -124,9 +124,7 @@
             <th>Instansi</th>
             <th>Bidang</th>
             <th>Keperluan</th>
-            <th>Keterangan</th>
-            <th>Status</th>
-            <th>jam Kunjungan</th>
+            <th>Tanggal</th>
             <th style="width: 110px">Aksi</th>
           </tr>
       <?php
@@ -149,9 +147,7 @@
             <td><?php echo $pro['nama_instansi']; ?></td>
             <td><?php echo $pro['nama_bidang']; ?></td>
             <td><?php echo $pro['keperluan']; ?></td>
-            <td><?php echo $pro['keterangan']; ?></td>
-            <td><?php echo $pro['nama_status']; ?></td>
-            <td><?php echo $pro['jam_datang']; ?></td>
+            <td><?php echo $pro['tgl_datang']; ?></td>
             <td>
 
 

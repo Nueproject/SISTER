@@ -159,11 +159,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 					
 						
 						<li>
-							<a class="dropdown-item" href="adminweb.php?module=api"> <i class="fa fa-shopping-cart"></i> <span>Resepsionis</span> </a>
+							<a class="dropdown-item" href="adminweb.php?module=resepsionis"> <i class="fa fa-shopping-cart"></i> <span>Resepsionis</span> </a>
 						</li>
 						
          	 			<li>
-							<a class="dropdown-item" href="adminweb.php?module=marketing_sales"> <i class="fa fa-male"></i> <span>Admin</span> </a>
+							<a class="dropdown-item" href="adminweb.php?module=barcode"> <i class="fa fa-male"></i> <span>Admin</span> </a>
 						</li>
 						<li>
 							<a class="dropdown-item" href="logout.php"> <i class="fa fa-power-off"></i> <span>Logout</span> </a>
@@ -188,8 +188,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
                 include "module/marketing_sales/form_edit.php";
             } elseif ($_GET['module'] == 'simpan_user') {
                 include "module/marketing_sales/aksi_simpan.php";
-            } elseif ($_GET['module'] == 'hapus_user') {
-                include "module/marketing_sales/aksi_hapus.php";				
+            } elseif ($_GET['module'] == 'barcode') {
+                include "module/resepsionis/barcode.php";				
 			} elseif ($_GET['module'] == 'hapus_user') {
                 include "module/marketing_sales/aksi_hapus.php";				
 			} 
