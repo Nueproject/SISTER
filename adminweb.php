@@ -51,7 +51,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 
 
 	
-	<body class="hold-transition skin-green sidebar-mini">
+	<body class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
 
 			<header class="main-header">
