@@ -1,6 +1,6 @@
 <?php
 
-$base_url ="";
-$admin_url ="";
+$base_url ="../../";
+$admin_url ="../../adminweb.php?module=resepsionis";
 
 ?>

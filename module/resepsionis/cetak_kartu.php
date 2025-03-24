@@ -8,7 +8,7 @@ ob_start();
 session_start();
 
 
-setlocale(LC_TIME, 'id_ID.utf8');
+
 
 if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
@@ -16,15 +16,14 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 } else { 
 
 //require_once __DIR__ . '../../vendor/autoload.php';
-$kode=$_GET['idtamu'];
-
-
-    $user = $_SESSION['username'];
+setlocale(LC_TIME, 'id_ID.utf8');
+$user = $_SESSION['username'];
     $sqlUser = "select * from user where username='".$_SESSION['username']."'";
 
     $kuerisqluser= mysqli_query($koneksi,"select * from user where username='".$_SESSION['username']."'");
  
     $user = $_SESSION['username'];
+    $kode=$_GET['idtamu'];
     ?>
 
 
