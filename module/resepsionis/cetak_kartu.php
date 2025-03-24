@@ -1,18 +1,11 @@
 <?php
 include "../../lib/config.php";                 
 include "../../lib/koneksi.php";
-require_once __DIR__ . '/../../vendor/autoload.php';
 
 
 //require_once __DIR__ . '../../vendor/autoload.php';
 setlocale(LC_TIME, 'id_ID.utf8');
-$user = $_SESSION['username'];
-    $sqlUser = "select * from user where username='".$_SESSION['username']."'";
-
-    $kuerisqluser= mysqli_query($koneksi,"select * from user where username='".$_SESSION['username']."'");
- 
-    $user = $_SESSION['username'];
-    $newuser =$_GET['petugas'];
+    $user =$_GET['petugas'];
     $kode=$_GET['idtamu'];
     ?>
 
@@ -320,9 +313,5 @@ $(document).ready(function () {
 
 </html>
 
-<?php };
- 
-
-?>
 
 
