@@ -1,19 +1,8 @@
-
 <?php
 include "../../lib/config.php";                 
 include "../../lib/koneksi.php";
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-ob_start();
-session_start();
-
-
-
-
-if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
-    echo "<center>Untuk mengakses modul, Anda harus login <br>";
-    echo "<a href=$admin_url><b>LOGIN</b></a></center>";
-} else { 
 
 //require_once __DIR__ . '../../vendor/autoload.php';
 setlocale(LC_TIME, 'id_ID.utf8');
@@ -23,6 +12,7 @@ $user = $_SESSION['username'];
     $kuerisqluser= mysqli_query($koneksi,"select * from user where username='".$_SESSION['username']."'");
  
     $user = $_SESSION['username'];
+    $newuser =$_GET['petugas'];
     $kode=$_GET['idtamu'];
     ?>
 
