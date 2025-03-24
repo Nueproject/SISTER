@@ -3,11 +3,20 @@
 include "../../lib/config.php";                 
 include "../../lib/koneksi.php";
 
-setlocale(LC_TIME, 'id_ID.utf8');
-//require_once __DIR__ . '../../vendor/autoload.php';
-$kode=$_GET['idtamu'];
+
 ob_start();
 session_start();
+
+
+setlocale(LC_TIME, 'id_ID.utf8');
+
+if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
+    echo "<center>Untuk mengakses modul, Anda harus login <br>";
+    echo "<a href=$admin_url><b>LOGIN</b></a></center>";
+} else { 
+
+//require_once __DIR__ . '../../vendor/autoload.php';
+$kode=$_GET['idtamu'];
 
 
     $user = $_SESSION['username'];
@@ -322,7 +331,7 @@ $(document).ready(function () {
 
 </html>
 
-
+<?php };
  
 
 ?>
