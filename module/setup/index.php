@@ -18,12 +18,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            RESEPSIONIS
-            <small>Buku Tamu</small>
+            SETUP
+            <small>Data</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Resepsionis</li>
+            <li class="active">SETUP</li>
           </ol>
         </section>
 
@@ -36,29 +36,21 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
               
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#TamuBaru" aria-controls="home" role="tab" data-toggle="tab">Daftar Tamu</a></li>
-              <li role="presentation" class="nav-link active"> <a class="dropdown-item" href="#TamuKonsultasi" aria-controls="profile" role="tab" data-toggle="tab">Konsultasi</a></li>
-                <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#MenungguBerkas" aria-controls="messages" role="tab" data-toggle="tab">Menunggu Berkas</a></li>
-                <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#TamuSelesai" aria-controls="messages" role="tab" data-toggle="tab">Selesai</a></li>
-                <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#HistoryTamu" aria-controls="messages" role="tab" data-toggle="tab">History Tamu</a></li>
+              <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#DataPNS" aria-controls="home" role="tab" data-toggle="tab">Data PNS</a></li>
+              <li role="presentation" class="nav-link active"> <a class="dropdown-item" href="#DataInstansi" aria-controls="profile" role="tab" data-toggle="tab">Data Instansi</a></li>
+             <li role="presentation" class="nav-link active"> <a class="dropdown-item" href="#DataTelepon" aria-controls="profile" role="tab" data-toggle="tab">Data Telepon</a></li>
             </ul>
             
             <!-- Tab panes -->
             <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="TamuBaru">
-                <?php include "module/resepsionis/tamu_baru.php"; ?>
+              <div role="tabpanel" class="tab-pane active" id="DataPNS">
+                <?php include "module/setup/data_pns.php"; ?>
               </div>
-              <div role="tabpanel" class="tab-pane" id="TamuKonsultasi">
-                <?php include "module/resepsionis/tamu_konsultasi.php";  ?>
+              <div role="tabpanel" class="tab-pane" id="DataInstansi">
+                <?php include "module/setup/data_instansi.php"; ?>
               </div>
-              <div role="tabpanel" class="tab-pane" id="MenungguBerkas">
-                <?php include "module/resepsionis/tamu_menunggu.php";  ?>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="TamuSelesai">
-                <?php include "module/resepsionis/tamu_selesai.php";  ?>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="HistoryTamu">
-                <?php include "module/resepsionis/tamu_all.php";  ?>
+               <div role="tabpanel" class="tab-pane" id="DataTelepon">
+                <?php include "module/setup/data_nomor.php"; ?>
               </div>
             </div>
             <!-- End Tab panes -->

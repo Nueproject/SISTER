@@ -7,7 +7,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 ob_start();
 session_start();
 
-//unset($_SESSION['productListUpdatePO']);
 
 if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
@@ -195,7 +194,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
             } elseif ($_GET['module'] == 'cari_pegawai') {
                 include "module/pegawai/form_cari.php";
             } elseif ($_GET['module'] == 'setup') {
-                include "odule/setup/index.php";
+                include "module/setup/index.php";
             } elseif ($_GET['module'] == 'pegawai') {
                 include "module/pegawai/index.php";
             } elseif ($_GET['module'] == 'barcode') {

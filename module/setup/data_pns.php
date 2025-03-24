@@ -1,45 +1,3 @@
-<?php
-
-//session_start();
-if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
-
-      echo "<center>Untuk mengakses modul, Anda harus login <br>";
-      echo "<a href=../../index.php><b>LOGIN</b></a></center>";
-
-} else { 
-
-    include "lib/config.php";
-    include "lib/koneksi.php";
-
-  ?>
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Data Pegawai
-            <small>Kantor Regional I BKN Yogyakarta</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Pegawai</li>
-          </ol>
-        </section>
-
-
-
-<?php
-// session_start();
-if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
-    echo "<center>Untuk mengakses modul, Anda harus login <br>";
-    echo "<a href=$admin_url><b>LOGIN</b></a></center>";
-} else { 
-
-?>
-
- 
-
 <div class="container px-4 p-3 text-white">
   <div class="row">
     <div class="col-xs-12">
@@ -60,7 +18,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="module/pegawai/aksi_pegawai.php" method="post">
+      <form action="module/setup/aksi_setup.php" method="post">
       <div class="modal-body">
         <div class="row">       
           <div class="col-md-12">
@@ -173,7 +131,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       
                       <tr>             
                         <td class="text-center"><?php echo $no; ?></td>
-                        <td class="text-center">
+                        <td>
                           <?php echo $usr['nama_pegawai']; ?>
                         </td>
                         <td class="text-center">
@@ -193,7 +151,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 
                   <!-- Example split danger button -->
                 <div class="btn-group">
-                  <a class="btn btn-sm btn-danger" href="module/pegawai/aksi_hapus.php?id_pegawai=<?php echo $usr['id_pegawai'];?>" onClick="return confirm('Anda yakin ingin <?php echo $usr['nama_pegawai'];?>?')">Delete</a> 
+                  <a class="btn btn-sm btn-danger" href="module/setup/aksi_hapus_pegawai.php?id_pegawai=<?php echo $usr['id_pegawai'];?>" onClick="return confirm('Anda yakin ingin <?php echo $usr['nama_pegawai'];?>?')">Delete</a> 
                   <a class="btn btn-sm btn-primary" href="javascript::void(0)" data-toggle="modal" data-target="#editpegawai<?php echo $usr['id_pegawai'];?>" >Edit</a>
                 </div>
 
@@ -220,7 +178,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 <div class="modal fade" id="editpegawai<?php echo $pro['id_pegawai'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-lg">
-      <form action="module/pegawai/aksi_pegawai.php" method="post">
+      <form action="module/setup/aksi_setup.php" method="post">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -293,9 +251,3 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     </div>
   </div>
 </div> <!-- end container -->
-      <?php } ?>
-        
-
-      </div><!-- /.content-wrapper -->
-
-<?php } ?>

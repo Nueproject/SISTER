@@ -10,52 +10,52 @@ CREATE TABLE `data_instansi` (
   `telp_mutasi` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO data_instansi (id_instansi, nama_instansi, pic_pensiun, telp_pensiun, pic_mutasi, telp_mutasi) VALUES
-('1', 'Daerah Istimewa Yogyakarta', '', '', '', ''),
-('2', 'Jawa Tengah', '', '', '', ''),
-('3', 'Kabupaten Bantul', '', '', '', ''),
-('4', 'Kabupaten Gunung Kidul', '', '', '', ''),
-('5', 'Kabupaten Kulon Progo', '', '', '', ''),
-('6', 'Kabupaten Sleman', '', '', '', ''),
-('7', 'Kota Yogyakarta', '', '', '', ''),
-('8', 'Kabupaten Banjarnegara', '', '', '', ''),
-('9', 'Kabupaten Banyumas', '', '', '', ''),
-('10', 'Kabupaten Batang', '', '', '', ''),
-('11', 'Kabupaten Blora', '', '', '', ''),
-('12', 'Kabupaten Boyolali', '', '', '', ''),
-('13', 'Kabupaten Brebes', '', '', '', ''),
-('14', 'Kabupaten Cilacap', '', '', '', ''),
-('15', 'Kabupaten Demak', '', '', '', ''),
-('16', 'Kabupaten Grobogan', '', '', '', ''),
-('17', 'Kabupaten Jepara', '', '', '', ''),
-('18', 'Kabupaten Karanganyar', '', '', '', ''),
-('19', 'Kabupaten Kebumen', '', '', '', ''),
-('20', 'Kabupaten Kendal', '', '', '', ''),
-('21', 'Kabupaten Klaten', '', '', '', ''),
-('22', 'Kabupaten Kudus', '', '', '', ''),
-('23', 'Kabupaten Magelang', '', '', '', ''),
-('24', 'Kabupaten Pati', '', '', '', ''),
-('25', 'Kabupaten Pekalongan', '', '', '', ''),
-('26', 'Kabupaten Pemalang', '', '', '', ''),
-('27', 'Kabupaten Purbalingga', '', '', '', ''),
-('28', 'Kabupaten Purworejo', '', '', '', ''),
-('29', 'Kabupaten Rembang', '', '', '', ''),
-('30', 'Kabupaten Semarang', '', '', '', ''),
-('31', 'Kabupaten Sragen', '', '', '', ''),
-('32', 'Kabupaten Sukoharjo', '', '', '', ''),
-('33', 'Kabupaten Tegal', '', '', '', ''),
-('34', 'Kabupaten Temanggung', '', '', '', ''),
-('35', 'Kabupaten Wonogiri', '', '', '', ''),
-('36', 'Kabupaten Wonosobo', '', '', '', ''),
-('37', 'Kota Magelang', '', '', '', ''),
-('38', 'Kota Pekalongan', '', '', '', ''),
-('39', 'Kota Salatiga', '', '', '', ''),
-('40', 'Kota Semarang', '', '', '', ''),
-('41', 'Kota Surakarta', '', '', '', ''),
-('42', 'Kota Tegal', '', '', '', ''),
-('43', 'Pribadi', '', '', '', ''),
-('44', 'Umum', '', '', '', ''),
-('45', 'Vertikal', '', '', '', '');
+INSERT INTO data_instansi (id_instansi, nama_instansi, pic_pensiun, telp_pensiun, pic_mutasi, telp_mutasi) VALUES 
+('1', 'Daerah Istimewa Yogyakarta', '1', '1', '1', '1'), 
+('2', 'Jawa Tengah', '1', '1', '1', '1'), 
+('3', 'Kabupaten Bantul', '1', '1', '1', '1'), 
+('4', 'Kabupaten Gunung Kidul', '1', '1', '1', '1'), 
+('5', 'Kabupaten Kulon Progo', '1', '1', '1', '1'), 
+('6', 'Kabupaten Sleman', '1', '1', '1', '1'), 
+('7', 'Kota Yogyakarta', '1', '1', '1', '1'), 
+('8', 'Kabupaten Banjarnegara', '1', '1', '1', '1'), 
+('9', 'Kabupaten Banyumas', '1', '1', '1', '1'), 
+('10', 'Kabupaten Batang', '1', '1', '1', '1'), 
+('11', 'Kabupaten Blora', '1', '1', '1', '1'), 
+('12', 'Kabupaten Boyolali', '1', '1', '1', '1'), 
+('13', 'Kabupaten Brebes', '1', '1', '1', '1'), 
+('14', 'Kabupaten Cilacap', '1', '1', '1', '1'), 
+('15', 'Kabupaten Demak', '1', '1', '1', '1'), 
+('16', 'Kabupaten Grobogan', '1', '1', '1', '1'), 
+('17', 'Kabupaten Jepara', '1', '1', '1', '1'), 
+('18', 'Kabupaten Karanganyar', '1', '1', '1', '1'), 
+('19', 'Kabupaten Kebumen', '1', '1', '1', '1'), 
+('20', 'Kabupaten Kendal', '1', '1', '1', '1'), 
+('21', 'Kabupaten Klaten', '1', '1', '1', '1'), 
+('22', 'Kabupaten Kudus', '1', '1', '1', '1'), 
+('23', 'Kabupaten Magelang', '1', '1', '1', '1'), 
+('24', 'Kabupaten Pati', '1', '1', '1', '1'), 
+('25', 'Kabupaten Pekalongan', '1', '1', '1', '1'), 
+('26', 'Kabupaten Pemalang', '1', '1', '1', '1'), 
+('27', 'Kabupaten Purbalingga', '1', '1', '1', '1'), 
+('28', 'Kabupaten Purworejo', '1', '1', '1', '1'), 
+('29', 'Kabupaten Rembang', '1', '1', '1', '1'), 
+('30', 'Kabupaten Semarang', '1', '1', '1', '1'), 
+('31', 'Kabupaten Sragen', '1', '1', '1', '1'), 
+('32', 'Kabupaten Sukoharjo', '1', '1', '1', '1'), 
+('33', 'Kabupaten Tegal', '1', '1', '1', '1'), 
+('34', 'Kabupaten Temanggung', '1', '1', '1', '1'), 
+('35', 'Kabupaten Wonogiri', '1', '1', '1', '1'), 
+('36', 'Kabupaten Wonosobo', '1', '1', '1', '1'), 
+('37', 'Kota Magelang', '1', '1', '1', '1'), 
+('38', 'Kota Pekalongan', '1', '1', '1', '1'), 
+('39', 'Kota Salatiga', '1', '1', '1', '1'), 
+('40', 'Kota Semarang', '1', '1', '1', '1'), 
+('41', 'Kota Surakarta', '1', '1', '1', '1'), 
+('42', 'Kota Tegal', '1', '1', '1', '1'), 
+('43', 'Pribadi', '1', '1', '1', '1'), 
+('44', 'Umum', '1', '1', '1', '1'), 
+('45', 'Vertikal', '1', '1', '1', '1');
 
 -- --------------------------------------------------------------
 
@@ -175,12 +175,13 @@ INSERT INTO `user` (`id_user`, `username`, `pass`, `roles`) VALUES
 -- --------------------------------------------------------
 
 CREATE TABLE `telepon` (
-  `id_telepon` char(36) NOT NULL,
+  `id_telepon` int(3) NOT NULL,
+  `id_bidang` int(3) NOT NULL,
   `lokasi` varchar(255) NOT NULL,
-  `nomor` varchar(255) NOT NULL
+  `nomor` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `telepon` (`id_telepon`, `lokasi`, `nomor`) VALUES
-('1', 'Resepsionis', '101');
+INSERT INTO `telepon` (`id_telepon`, `id_bidang`,`lokasi`, `nomor`) VALUES
+('1', '1', 'Resepsionis', '101');
 
 CREATE TABLE `data_pelayanan` (
   `id_pelayanan` int(9) NOT NULL,
