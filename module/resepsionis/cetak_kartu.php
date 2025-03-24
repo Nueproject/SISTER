@@ -9,12 +9,7 @@ $kode=$_GET['idtamu'];
 ob_start();
 session_start();
 
-//unset($_SESSION['productListUpdatePO']);
 
-if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
-    echo "<center>Untuk mengakses modul, Anda harus login <br>";
-    echo "<a href=$admin_url><b>LOGIN</b></a></center>";
-} else { 
     $user = $_SESSION['username'];
     $sqlUser = "select * from user where username='".$_SESSION['username']."'";
 
@@ -327,7 +322,6 @@ $(document).ready(function () {
 
 </html>
 
-<?php }; 
 
  
 
