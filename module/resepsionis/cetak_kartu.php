@@ -121,9 +121,14 @@ echo'
        
         <td width="70%"style="padding-left: 10px;">'.$pro['nip_tamu'].'</td>
     </tr>    
+     </tr>    
+    <tr><td width="30%" style="padding-left: 10px;">Wilayah</td>
+        
+        <td width="70%"  style="padding-left: 10px;">'.$pro['nama_instansi'].'</td>
+    </tr> 
     <tr><td width="30%" style="padding-left: 10px;">Instansi</td>
         
-        <td width="70%"  style="padding-left: 10px;">'.$pro['nama_instansi'].' || '.$pro['ket_instansi'].'</td>
+        <td width="70%"  style="padding-left: 10px;">'.$pro['ket_instansi'].'</td>
     </tr>    
     <tr><td width="30%" style="padding-left: 10px;">Bidang</td>
         

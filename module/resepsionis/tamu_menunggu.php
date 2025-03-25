@@ -159,7 +159,7 @@
                 
                   <!-- Example split danger button -->
                   <div class="btn-group">                        
-                  <a class="btn btn-danger" href="module/resepsionis/cetak_kartu.php?idtamu=<?php echo $pro['id_pelayanan'];?>" role="button">Cetak</a> <button type="button" class="btn btn-primary btn-sm">Action</button>
+                   <a class="btn btn-danger" href="module/resepsionis/cetak_kartu.php?idtamu=<?php echo $pro['id_pelayanan'];?>&petugas=<?php echo $user;?>" role="button">Cetak</a> <button type="button" class="btn btn-primary btn-sm">Action</button>
                   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                   </button>
