@@ -42,7 +42,7 @@
             <select class="form-control" id="namaInstansi" name="namaInstansi" required>
                   <option selected>Pilih Instansi</option>
                       <?php 
-                            $instansi = "select * from data_instansi";
+                            $instansi = "select * from data_instansi order by nama_instansi asc";
                             $kueriQuo= mysqli_query($koneksi, $instansi);
                             while($pro=mysqli_fetch_array($kueriQuo)){
                           ?>
@@ -65,7 +65,7 @@
           <select class="form-control" id="bidang" name="bidang" required>
                 <option selected>Pilih Bidang</option>
                     <?php 
-                          $bidang = "select * from data_bidang";
+                          $bidang = "select * from data_bidang order by nama_bidang asc";
                           $kueriBid= mysqli_query($koneksi, $bidang);
                           while($pro=mysqli_fetch_array($kueriBid)){
                         ?>
@@ -370,7 +370,7 @@
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from data_instansi");
+                              $products = mysqli_query($koneksi,"select * from data_instansi order by nama_instansi asc");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
                                 <option value="<?php echo $p['id_instansi']; ?>"> <?php echo $p['nama_instansi']; ?></option>
@@ -388,7 +388,7 @@
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from data_bidang");
+                              $products = mysqli_query($koneksi,"select * from data_bidang order by nama_bidang asc");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
                                 <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
@@ -462,7 +462,7 @@
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_instansi']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from data_instansi");
+                              $products = mysqli_query($koneksi,"select * from data_instansi order by nama_instansi asc");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
                                 <option value="<?php echo $p['id_instansi']; ?>"> <?php echo $p['nama_instansi']; ?></option>
@@ -476,8 +476,8 @@
                   <?php $default = $pro['nama_instansi']; ?>
                     <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from data_bidang");
-                              while($p=mysqli_fetch_array($products)){                          
+                              $products = mysqli_query($koneksi,"select * from data_bidang order by nama_bidang asc");
+                              while($p=mysqli_fetch_array($products)){                           
                              ?>
                                 <option value="<?php echo $p['id_bidang']; ?>"> <?php echo $p['nama_bidang']; ?></option>
                             <?php } ?>
@@ -506,7 +506,7 @@
                   <?php $default = $pro['nama_pegawai']; ?>
                     <option value="<?php echo $pro['id_pegawai']; ?>"> <?php echo $pro['nama_pegawai']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from data_pegawai");
+                              $products = mysqli_query($koneksi,"select * from data_pegawai order by nama_pegawai asc");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
                                 <option value="<?php echo $p['id_pegawai']; ?>"> <?php echo $p['nama_pegawai']; ?></option>

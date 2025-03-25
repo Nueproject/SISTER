@@ -160,7 +160,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <th class="text-center">Jabatan</th>
                         <th class="text-center">Bidang</th>                        
                         <th class="text-center">Nomor HP</th>
-                        <th class="text-right">Aksi</th>
                       </tr>
                       <?php        
                       $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jabatan order by nama_pegawai asc");   
@@ -173,7 +172,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       
                       <tr>             
                         <td class="text-center"><?php echo $no; ?></td>
-                        <td class="text-center">
+                        <td >
                           <?php echo $usr['nama_pegawai']; ?>
                         </td>
                         <td class="text-center">
@@ -188,17 +187,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <td class="text-center">
                          <a href="https://wa.me/<?php echo $usr['nomor_hp']; ?>"> <?php echo $usr['nomor_hp']; ?> </a>
                         </td>
-                        <td>
-                          <!-- Single button -->                
-                
-                  <!-- Example split danger button -->
-                <div class="btn-group">
-                  <a class="btn btn-sm btn-danger" href="module/pegawai/aksi_hapus.php?id_pegawai=<?php echo $usr['id_pegawai'];?>" onClick="return confirm('Anda yakin ingin <?php echo $usr['nama_pegawai'];?>?')">Delete</a> 
-                  <a class="btn btn-sm btn-primary" href="javascript::void(0)" data-toggle="modal" data-target="#editpegawai<?php echo $usr['id_pegawai'];?>" >Edit</a>
-                </div>
-
-                <!-- END OPTION -->
-                        </td>
+                       
                       
                       </tr>
                       <?php } ?>
