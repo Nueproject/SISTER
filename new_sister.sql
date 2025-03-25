@@ -376,8 +376,46 @@ CREATE TABLE `telepon` (
   `lokasi` varchar(255) NOT NULL,
   `nomor` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `telepon` (`id_telepon`, `id_bidang`,`lokasi`, `nomor`) VALUES
-('1', '1', 'Resepsionis', '101');
+
+INSERT INTO telepon (id_telepon, id_bidang, lokasi, nomor)
+VALUES
+(1, 1, 'OPERATOR', '101'),
+(2, 1, 'ARSIP EKSPEDISI', '697'),
+(3, 1, 'DRIVER', '504'),
+(4, 1, 'KA SUB BAGIAN UMUM', '504'),
+(5, 1, 'DOKPEN', '254'),
+(6, 1, 'LOKET 1 PENSIUN', '681'),
+(7, 1, 'LOKET 2 MUTASI', '682'),
+(8, 1, 'KABID BIMTEK', '106'),
+(9, 1, 'PDSK', '107'),
+(10, 1, 'INKA BAWAH SELATAN', '121'),
+(11, 1, 'INKA BAWAH UTARA', '108'),
+(12, 1, 'KOPERASI', '110'),
+(13, 1, 'GUDANG ATK', '113'),
+(14, 1, 'POS SATPAM', '256'),
+(15, 1, 'SATPAM DEPAN', ''),
+(16, 1, 'KAKANREG', '203'),
+(17, 1, 'SEK KAKANREG', '202'),
+(18, 1, 'UP / KEPEGAWAIAN', '205'),
+(19, 1, 'ULP', '206'),
+(20, 1, 'KEUANGAN', '204'),
+(21, 1, 'KABAG TATA USAHA', '201'),
+(22, 1, 'KABID MUTASI', '207'),
+(23, 1, 'MUTASI (UTARA)', '208'),
+(24, 1, 'MUTASI (TENGAH)', '209'),
+(25, 1, 'MUTASI (SELATAN)', '210'),
+(26, 1, 'MUTASI (TU)', '211'),
+(27, 1, 'POLIKLINIK', '684'),
+(28, 1, 'KABID INKA', '307'),
+(29, 1, 'INKA BARAT1', '315'),
+(30, 1, 'INKA BARAT2', '315'),
+(31, 1, 'INKA TIMUR1', '304'),
+(32, 1, 'INKA TIMUR2', '305'),
+(33, 1, 'KABID PENSIUN', '301'),
+(34, 1, 'PENSIUN SELATAN', '302'),
+(35, 1, 'PENSIUN UTARA', '698'),
+(36, 1, 'CAT GEDUNG ARSIP', '407'),
+(37, 1, 'TU ASSESMENT', '683');
 
 CREATE TABLE `data_pelayanan` (
   `id_pelayanan` int(9) NOT NULL,
