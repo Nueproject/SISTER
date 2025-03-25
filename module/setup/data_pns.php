@@ -205,7 +205,7 @@
                   <?php $default = $pro['nama_jabatan']; ?>
                     <option value="<?php echo $pro['id_jabatan']; ?>"> <?php echo $pro['nama_jabatan']; ?></option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from jenis_jabatan");
+                              $products = mysqli_query($koneksi,"select * from jenis_jabatan order by nama_jabatan asc");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
                                 <option value="<?php echo $p['id_jabatan']; ?>"> <?php echo $p['nama_jabatan']; ?></option>

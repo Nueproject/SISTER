@@ -84,7 +84,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           <?php echo $usr['nama_pegawai']; ?>
                         </td>
                         <td class="text-center">
-                          <?php echo $usr['nama_pegawai']; ?>
+                          <?php echo $usr['nip_pegawai']; ?>
                         </td>
                         <td class="text-center">
                           <?php echo $usr['nama_jabatan']; ?>

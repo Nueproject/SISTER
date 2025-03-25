@@ -284,8 +284,8 @@ VALUES
 --
 
 CREATE TABLE `jenis_jabatan` (
-  `id_jabatan` char(1) NOT NULL,
-  `nama_jabatan` varchar(15) NOT NULL
+  `id_jabatan` char(3) NOT NULL,
+  `nama_jabatan` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Indeks untuk tabel `jenis_jabatan`
@@ -296,10 +296,53 @@ ALTER TABLE `jenis_jabatan`
 -- Dumping data untuk tabel `jenis_jabatan`
 --
 
-INSERT INTO `jenis_jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
-('1', 'Pranata Komputer Ahli Pertama'),
-('2', 'Pranata Komputer Ahli Madya'),
-('3', 'Arsiparis');
+INSERT INTO jenis_jabatan (id_jabatan, nama_jabatan)
+VALUES
+(1, 'Kepala Kantor'),
+(2, 'Kepala Bagian Tata Usaha'),
+(3, 'Kasubag Kepegawaian dan Pengelola Kinerja'),
+(4, 'Asesor SDMA Muda'),
+(5, 'Analis SDMA Pertama'),
+(6, 'Analis Keuangan'),
+(7, 'Arsiparis Mahir'),
+(8, 'Analis Pengembangan SDM Aparatur'),
+(9, 'Analis Kinerja'),
+(10, 'Pengelola kepegawaian'),
+(11, 'Kasubag Perencanaan & Keuangan'),
+(12, 'Analis Monev & pelaporan'),
+(13, 'Analis Pengelolaan Keuangan APBN Madya'),
+(14, 'Analis Pengelolaan Keuangan APBN Pertama'),
+(15, 'Analis Pengelolaan Keuangan APBN Muda'),
+(16, 'Analis Perencanaan'),
+(17, 'Bendahara Pranata Keuangan APBN'),
+(18, 'Penyelia Pranata SDMA TERAMPIL'),
+(19, 'Kasubag Umum'),
+(20, 'Pengelola Barang Milik Negara'),
+(21, 'Pranata Humas Pertama'),
+(22, 'Pengelola pengadaan Barang/Jasa Pertama'),
+(23, 'Pengelola Kendaraan'),
+(24, 'Teknisi Peralatan, Listrik dan Elektronika'),
+(25, 'Pengelola data'),
+(26, 'Analis Publikasi'),
+(27, 'KaBid Mutasi & Status Kepegawaian'),
+(28, 'Analis Permasalahan Hukum'),
+(29, 'Pranata SDMA Penyelia'),
+(30, 'Pengadministrasi Kepeg'),
+(31, 'Kabid Pengangkatan & Pensiun'),
+(32, 'Pengelola Data'),
+(33, 'Pranata SDMA Mahir'),
+(34, 'Arsiparis Pertama'),
+(35, 'Arsiparis Penyelia'),
+(36, 'Pranata Komputer Muda'),
+(37, 'Pranata Komputer Pertama'),
+(38, 'Analis Data dan Informasi'),
+(39, 'Pranata Komputer Mahir'),
+(40, 'Analis Sistem Informasi dan Jaringan'),
+(41, 'Auditor Manajemen ASN Muda'),
+(42, 'Auditor Manajemen ASN Madya'),
+(43, 'Asesor SDMA Pertama'),
+(44, 'Asesor SDM Aparatur Muda'),
+(45, 'Kepala UPT');
 
 -- --------------------------------------------------------
 
