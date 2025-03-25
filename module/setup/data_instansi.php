@@ -136,13 +136,43 @@
                         <th class="text-right">Aksi</th>
                       </tr>
                       <?php        
-                      $datapns= mysqli_query($koneksi,"select * from data_instansi di join data_pegawai dp on di.pic_pensiun = dp.id_pegawai and di.pic_mutasi = dp.id_pegawai join telepon on di.telp_pensiun =  telepon.id_telepon and di.telp_pensiun = telepon.id_telepon
-");  
+                      $datapns= mysqli_query($koneksi,"select * from data_instansi");   
+
      
                         $no=0;                     
-                        while($usr=mysqli_fetch_array($datapns)){  
+                      while($usr=mysqli_fetch_array($datapns)){  
                       $usr_id = $usr['id_instansi'];
                       $no+=1;
+
+
+                      $idpensiun = $usr['pic_pensiun'];
+                      $quepensiun = "select nama_pegawai as npensiun from data_pegawai where id_pegawai= '$idpensiun'";
+                      $jeneng= mysqli_query($koneksi, $quepensiun) or die(mysqli_error($koneksi));
+                      while ($rowbid = $jeneng->fetch_assoc()) {
+                          $pensiun=$rowbid['npensiun'];
+                      }
+
+                      $idmutasi = $usr['pic_mutasi'];
+                      $quemutasi = "select nama_pegawai as nmutasi from data_pegawai where id_pegawai= '$idmutasi'";
+                      $jeneng2= mysqli_query($koneksi, $quemutasi) or die(mysqli_error($koneksi));
+                      while ($rowbid2 = $jeneng2->fetch_assoc()) {
+                          $mutasi=$rowbid2['nmutasi'];
+                      }
+
+                       $idtpensiun = $usr['telp_pensiun'];
+                      $quetpensiun = "select nomor as tpensiun from telepon where id_telepon= '$idtpensiun'";
+                      $telp1= mysqli_query($koneksi, $quetpensiun) or die(mysqli_error($koneksi));
+                      while ($rowbidt1 = $telp1->fetch_assoc()) {
+                          $tpensiun=$rowbidt1['tpensiun'];
+                      }
+
+                      $idtmutasi = $usr['telp_mutasi'];
+                      $quetmutasi = "select nomor as tmutasi from telepon where id_telepon= '$idtmutasi'";
+                      $telp2= mysqli_query($koneksi, $quetmutasi) or die(mysqli_error($koneksi));
+                      while ($rowbidt2 = $telp2->fetch_assoc()) {
+                          $tmutasi=$rowbidt2['tmutasi'];
+                      }
+
                       ?>
                       
                       <tr>             
@@ -151,16 +181,16 @@
                           <?php echo $usr['nama_instansi']; ?>
                         </td>
                         <td>
-                          <?php echo $usr['nama_pegawai']; ?>
+                          <?php echo $pensiun; ?>
                         </td>
                         <td class="text-center">
-                          <?php echo $usr['nomor']; ?>
+                          <?php echo $tpensiun; ?>
                         </td>
                         <td>
-                          <?php echo $usr['nama_pegawai']; ?>
+                          <?php echo $mutasi; ?>
                         </td>
                         <td class="text-center">
-                       <?php echo $usr['nomor']; ?>
+                       <?php echo $tmutasi; ?>
                         </td>
                         <td>
                             <!-- Example split danger button -->
@@ -215,7 +245,7 @@
                                   <?php $default = $pro['nama_pegawai']; ?>
                                     <option value="<?php echo $pro['id_pegawai']; ?>"> <?php echo $pro['nama_pegawai']; ?></option>
                                              <?php
-                                              $products = mysqli_query($koneksi,"select * from data_pegawai");
+                                              $products = mysqli_query($koneksi,"select * from data_pegawai order by nama_pegawai asc");
                                               while($p=mysqli_fetch_array($products)){                          
                                              ?>
                                                 <option value="<?php echo $p['id_pegawai']; ?>"> <?php echo $p['nama_pegawai']; ?></option>

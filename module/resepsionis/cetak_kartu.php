@@ -7,6 +7,13 @@ include "../../lib/koneksi.php";
 setlocale(LC_TIME, 'id_ID.utf8');
     $user =$_GET['petugas'];
     $kode=$_GET['idtamu'];
+
+    $namqu = "select nama_resepsionis as nama from user where username= '$user'";
+    $jeneng= mysqli_query($koneksi, $namqu) or die(mysqli_error($koneksi));
+    while ($rowbid = $jeneng->fetch_assoc()) {
+        $namus=$rowbid['nama'];
+    }
+
     ?>
 
 
@@ -183,7 +190,7 @@ echo'
         <td width="5%""> </td>
         <td width="30%"><center><b>( '.$pro['nama_tamu'].' )</b></center></td>
         <td width="30%""></td>
-        <td width="35%"><center><b>( '.$user.' )</b></center></td>
+        <td width="35%"><center><b>( '.$namus.' )</b></center></td>
     </tr>
 </table>';
     }; ?>
