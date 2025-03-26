@@ -168,9 +168,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
 						<li>
 							<a class="dropdown-item" href="adminweb.php?module=pegawai"> <i class="fa fa-shopping-cart"></i> <span>Data PNS</span> </a>
 						</li>
+
+						<li>
+							<a class="dropdown-item" href="adminweb.php?module=telepon"> <i class="fa fa-shopping-cart"></i> <span>Telepon</span> </a>
+						</li>
 						
          	 			<li>
-							<a class="dropdown-item" href="adminweb.php?module=barcode"> <i class="fa fa-male"></i> <span>Admin</span> </a>
+							<a class="dropdown-item" href="adminweb.php?module=laporan"> <i class="fa fa-male"></i> <span>Laporan</span> </a>
 						</li>
 						<li>
 							<a class="dropdown-item" href="logout.php"> <i class="fa fa-power-off"></i> <span>Logout</span> </a>
@@ -193,8 +197,16 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pass'])) {
                 include "module/resepsionis/form_cari.php";
             } elseif ($_GET['module'] == 'cari_pegawai') {
                 include "module/pegawai/form_cari.php";
+
             } elseif ($_GET['module'] == 'setup') {
                 include "module/setup/index.php";
+
+            } elseif ($_GET['module'] == 'telepon') {
+            include "module/telepon/index.php";
+
+        } elseif ($_GET['module'] == 'laporan') {
+            include "module/laporan/index.php";
+
             } elseif ($_GET['module'] == 'pegawai') {
                 include "module/pegawai/index.php";
             } elseif ($_GET['module'] == 'barcode') {

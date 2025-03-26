@@ -40,7 +40,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
               <li role="presentation" class="nav-link active"> <a class="dropdown-item" href="#TamuKonsultasi" aria-controls="profile" role="tab" data-toggle="tab">Konsultasi</a></li>
                 <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#MenungguBerkas" aria-controls="messages" role="tab" data-toggle="tab">Menunggu Berkas</a></li>
                 <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#TamuSelesai" aria-controls="messages" role="tab" data-toggle="tab">Selesai</a></li>
-                <li role="presentation" class="nav-link active"><a class="dropdown-item" href="#HistoryTamu" aria-controls="messages" role="tab" data-toggle="tab">History Tamu</a></li>
+                
             </ul>
             
             <!-- Tab panes -->

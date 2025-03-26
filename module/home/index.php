@@ -52,15 +52,15 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     <div class="col container form-control">
                           <a href="adminweb.php?module=pegawai"> <img src="img/assets/button/pns.png" class="image"></a> 
                           <br> 
-                          <button type="button" class="btn btn-outline-success">DATA PNS</button>
+                          <button type="button" class="btn btn-outline-success">DATA PEGAWAI</button>
                     </div>
                     <div class="col container form-control">
-                          <a href="adminweb.php?module=resepsionis"> <img src="img/assets/button/telpon.png" class="image"></a> 
+                          <a href="adminweb.php?module=telepon"> <img src="img/assets/button/telpon.png" class="image"></a> 
                           <br> 
                           <button type="button" class="btn btn-outline-success">NO TELPON RUANGAN</button>
                     </div>
                     <div class="col container form-control">
-                       <a href="adminweb.php?module=home"> <img src="img/assets/button/report.png" class="image"></a> 
+                       <a href="adminweb.php?module=laporan"> <img src="img/assets/button/report.png" class="image"></a> 
                           <br> 
                        <button type="button" class="btn btn-outline-success">LAPORAN</button>
                     </div>
