@@ -390,7 +390,7 @@
                   <label for="inputEmail3" class="control-label">Bidang</label>
                   <select class="form-control" id="instansi" name="bidangUpdate">
                   <?php $default = $pro['nama_instansi']; ?>
-                    <option value="<?php echo $pro['id_instansi']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
+                    <option value="<?php echo $pro['id_bidang']; ?>"> <?php echo $pro['nama_bidang']; ?></option>
                              <?php
                               $products = mysqli_query($koneksi,"select * from data_bidang order by nama_bidang asc");
                               while($p=mysqli_fetch_array($products)){                          
