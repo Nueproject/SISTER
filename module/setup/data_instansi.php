@@ -195,9 +195,9 @@
                         <td>
                             <!-- Example split danger button -->
                           <div class="btn-group">
-                            <a class="btn btn-sm btn-danger" href="module/setup/aksi_hapus_instansi.php?id_instansi=<?php echo $usr['id_instansi'];?>" onClick="return confirm('Anda yakin ingin menghapus <?php echo $usr['nama_instansi'];?>?')">Delete</a> 
-                            <a class="btn btn-sm btn-primary" href="javascript::void(0)" data-toggle="modal" data-target="#editinstansi<?php echo $usr['id_instansi'];?>" >Edit</a>
-                          </div>
+                  <a class="btn btn-sm btn-danger" href="module/setup/aksi_hapus_instansi.php?id_instansi=<?php echo $usr['id_instansi'];?>" onClick="return confirm('Anda yakin ingin menghapus <?php echo $usr['nama_instansi'];?>?')">Delete</a> 
+                  <a class="btn btn-sm btn-primary" href="javascript::void(0)" data-toggle="modal" data-target="#editinstansi<?php echo $usr['id_instansi'];?>" >Edit</a>
+                </div>
                           <!-- END OPTION -->
                         </td>
                       
@@ -212,7 +212,7 @@
 
 
           <?php
-      $datapeg= mysqli_query($koneksi,"select * from data_instansi di join data_pegawai dp on di.pic_pensiun = dp.id_pegawai and di.pic_mutasi = dp.id_pegawai join telepon on di.telp_pensiun =  telepon.id_telepon and di.telp_pensiun = telepon.id_telepon"); 
+      $datapeg= mysqli_query($koneksi,"select * from data_instansi di join data_pegawai dp on di.pic_pensiun = dp.id_pegawai or di.pic_mutasi = dp.id_pegawai join telepon on di.telp_pensiun =  telepon.id_telepon or di.telp_pensiun = telepon.id_telepon"); 
      
       while($pro=mysqli_fetch_array($datapeg)){
         ?>
@@ -259,7 +259,7 @@
                                   <?php $default = $pro['lokasi']; ?>
                                     <option value="<?php echo $pro['id_telepon']; ?>"> <?php echo $pro['lokasi']; ?></option>
                                              <?php
-                                              $products = mysqli_query($koneksi,"select * from telepon");
+                                              $products = mysqli_query($koneksi,"select * from telepon order by lokasi asc");
                                               while($p=mysqli_fetch_array($products)){                          
                                              ?>
                                                 <option value="<?php echo $p['id_telepon']; ?>"> <?php echo $p['lokasi']; ?></option>
@@ -273,7 +273,7 @@
                                   <?php $default = $pro['nama_pegawai']; ?>
                                     <option value="<?php echo $pro['id_pegawai']; ?>"> <?php echo $pro['nama_pegawai']; ?></option>
                                              <?php
-                                              $products = mysqli_query($koneksi,"select * from data_pegawai");
+                                              $products = mysqli_query($koneksi,"select * from data_pegawai order by nama_pegawai asc");
                                               while($p=mysqli_fetch_array($products)){                          
                                              ?>
                                                 <option value="<?php echo $p['id_pegawai']; ?>"> <?php echo $p['nama_pegawai']; ?></option>
@@ -287,7 +287,7 @@
                                   <?php $default = $pro['lokasi']; ?>
                                     <option value="<?php echo $pro['id_telepon']; ?>"> <?php echo $pro['lokasi']; ?></option>
                                              <?php
-                                              $products = mysqli_query($koneksi,"select * from telepon");
+                                              $products = mysqli_query($koneksi,"select * from telepon order by lokasi asc");
                                               while($p=mysqli_fetch_array($products)){                          
                                              ?>
                                                 <option value="<?php echo $p['id_telepon']; ?>"> <?php echo $p['lokasi']; ?></option>

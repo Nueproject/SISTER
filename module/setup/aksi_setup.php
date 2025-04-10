@@ -57,7 +57,7 @@
 				nomor_hp='".$noHP."'
 				where id_pegawai =".$id_tamu) or die(mysqli_error($koneksi));
 
-		 unset($_SESSION['formDataCopy']);
+		 unset($_SESSION['formDataUpdate']);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
 
@@ -181,7 +181,7 @@
 	if(isset($_POST['editDataInstansi'])){
 
 		
-		$_SESSION['formDataUpdate'] = $_POST;
+		$_SESSION['formEditInstansi'] = $_POST;
 		$id_instansi = $_POST['idPegawai'];
 		$nama = $_POST['nama'];
 		$pensiun = $_POST['pensiun'];
@@ -201,7 +201,7 @@
 				telp_mutasi='".$tmutasi."'
 				where id_instansi =".$id_instansi) or die(mysqli_error($koneksi));
 
-		 unset($_SESSION['formDataUpdate']);
+		  unset($_SESSION['formEditInstansi']);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
 
@@ -238,7 +238,7 @@
 	if(isset($_POST['editDataNomor'])){
 
 		
-		$_SESSION['formDataUpdate'] = $_POST;
+		$_SESSION['formEditNomor'] = $_POST;
 		$id_telepon = $_POST['id_telepon'];
 		$bidang = $_POST['bidang'];
 		$lokasi = $_POST['lokasi'];
@@ -254,7 +254,7 @@
 				nomor='".$nomor."'
 				where id_telepon =".$id_telepon) or die(mysqli_error($koneksi));
 
-		 unset($_SESSION['formDataUpdate']);
+		 unset($_SESSION['formEditNomor']);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
 
