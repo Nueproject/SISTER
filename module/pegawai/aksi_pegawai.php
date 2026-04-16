@@ -14,8 +14,10 @@
 		$nohp = $_SESSION['formTambahPegawai']['noHp'];
 		$bidang = $_SESSION['formTambahPegawai']['namaBidang'];
 		$jabatan = $_SESSION['formTambahPegawai']['namaJabatan'];
-		$tgl_datang = date('Y-m-d');
-		$idtgl = date('Ydm');
+		$gelar = $_SESSION['formTambahPegawai']['gelar'];
+		$golongan = $_SESSION['formTambahPegawai']['golongan'];
+		$kelamin = $_SESSION['formTambahPegawai']['kelamin'];
+		$status =$_SESSION['formTambahPegawai']['status'];
 		
 		$maxid = "select max(id_pegawai) AS idpegawai from data_pegawai";
 		$querymax = mysqli_query($koneksi, $maxid);
@@ -23,7 +25,7 @@
 		$newid = $count['idpegawai'] + 1;
 		
 		
-			$simpantamu = mysqli_query($koneksi, "insert into data_pegawai (id_pegawai, nip_pegawai, nama_pegawai, nomor_hp, bidang, jabatan) values ('$newid', '$nip', '$nama', '$nohp', '$bidang', '$jabatan')") or die(mysqli_error($koneksi));
+			$simpantamu = mysqli_query($koneksi, "insert into data_pegawai (id_pegawai, nip_pegawai, nama_pegawai, nomor_hp, bidang, jabatan, gelar, golongan, jenis_kelamin, status) values ('$newid', '$nip', '$nama', '$nohp', '$bidang', '$jabatan', '$gelar', '$golongan', '$kelamin', '$status')") or die(mysqli_error($koneksi));
 			
 		
 
@@ -41,7 +43,11 @@
 		$id_tamu = $_POST['idPegawai'];
 		$nama = $_POST['nama'];
 		$nip = $_POST['nip'];
+		$gelar = $_POST['gelar'];
+		$golongan = $_POST['golongan'];
+		$kelamin = $_POST['kelamin'];
 		$jabatan =$_POST['jabatan'];
+		$status =$_POST['status'];
 		$bidang = $_POST['bidangUpdate'];
 		$noHP = $_POST['NoHP'];
 		
@@ -53,6 +59,10 @@
 				nip_pegawai='".$nip."',
 				nama_pegawai='".$nama."',
 				jabatan='".$jabatan."',
+				jenis_kelamin='".$kelamin."',
+				gelar='".$gelar."',
+				golongan='".$golongan."',
+				status='".$status."',
 				bidang='".$bidang."',
 				nomor_hp='".$noHP."'
 				where id_pegawai =".$id_tamu) or die(mysqli_error($koneksi));

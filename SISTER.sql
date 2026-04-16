@@ -103,7 +103,7 @@ CREATE TABLE `data_tamu_instansi` (
 ALTER TABLE `data_tamu_instansi`
   ADD PRIMARY KEY (`id_tamu_instansi`);
 --
--- Dumping data untuk tabel `pns`
+-- Dumping data untuk tabel `asn`
 --
 
 INSERT INTO `data_tamu_instansi` (`id_tamu_instansi`,`kode_tamu`,`nip`, `bidang`, `keperluan`, `keterangan`, `status`, `tgl_datang`, `jam_datang`) VALUES
@@ -137,10 +137,10 @@ INSERT INTO `jenis_jabatan` (`id`, `nama_jenis_jabatan`, `isi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pns`
+-- Struktur dari tabel `asn`
 --
 
-CREATE TABLE `pns` (
+CREATE TABLE `asn` (
   `nip` varchar(18) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `jenis_kelamin` char(1) NOT NULL,
@@ -151,18 +151,18 @@ CREATE TABLE `pns` (
   `path_upload` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
--- Indeks untuk tabel `pns`
+-- Indeks untuk tabel `asn`
 --
-ALTER TABLE `pns`
+ALTER TABLE `asn`
   ADD PRIMARY KEY (`nip`),
   ADD KEY `jenis_jabatan_id` (`jenis_jabatan_id`);
 
 
 --
--- Dumping data untuk tabel `pns`
+-- Dumping data untuk tabel `asn`
 --
 
-INSERT INTO `pns` (`nip`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `jenis_jabatan_id`, `nomor_hp`, `email`, `path_upload`) VALUES
+INSERT INTO `asn` (`nip`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `jenis_jabatan_id`, `nomor_hp`, `email`, `path_upload`) VALUES
 ('4', 'Doni Suparto', 'L', '2023-11-30', '3', '089621', 'doni@gmail.com', '../data_gambar/path_upload/20231130052721104.png');
 
 -- --------------------------------------------------------
@@ -186,7 +186,7 @@ CREATE TABLE `ppnpn` (
 ALTER TABLE `ppnpn`
   ADD PRIMARY KEY (`nippnpn`);
 --
--- Dumping data untuk tabel `pns`
+-- Dumping data untuk tabel `asn`
 --
 INSERT INTO `ppnpn` (`nippnpn`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `jabatan`, `nomor_hp`, `email`, `upload`) VALUES
 ('262021011035', 'Dimas Dwi Nugroho', 'L', '1995-12-20', 'pramubakti', '082135225590', 'nueproject@gmail.com', '262021011035.png');
