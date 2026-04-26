@@ -55,9 +55,17 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     <div class="card dashboard-card p-4">
                         <div class="d-flex align-items-center">
                             <div class="stat-icon bg-primary me-3"><i class="fas fa-users"></i></div>
+
                             <div>
                                 <h5 class="mb-0">Total Pegawai</h5>
-                                <h3 class="text-primary">257</h3>
+                                <?php
+                                $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result);                        
+                             ?>
+                                <h3 class="text-primary"><?php echo $row['total_pegawai']; 
+                                ?></h3>
+                                
                             </div>
                         </div>
                     </div>
@@ -68,7 +76,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                             <div class="stat-icon bg-success me-3"><i class="fas fa-building"></i></div>
                             <div>
                                 <h5 class="mb-0">Kanreg I BKN</h5>
-                                <h3 class="text-success">235</h3>
+                                <?php
+                                $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result);                        
+                             ?>
+                                <h3 class="text-primary"><?php echo $row['total_pegawai']; 
+                                ?></h3>
                             </div>
                         </div>
                     </div>
@@ -79,7 +93,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                             <div class="stat-icon bg-info me-3"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <h5 class="mb-0">UPT Semarang</h5>
-                                <h3 class="text-info">22</h3>
+                                 <?php
+                                $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result);                        
+                             ?>
+                                <h3 class="text-primary"><?php echo $row['total_pegawai']; 
+                                ?></h3>
                             </div>
                         </div>
                     </div>
@@ -89,48 +109,303 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="chart-container">
-                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i> Rekapitulasi Jumlah Pegawai Per Bidang</h5>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai yang akan pensiun</h5>
                         <div style="height: 350px;">
                             <canvas id="manualBarChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- REKAPITULASI BY USIA -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card p-4">
+                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN JENIS KELAMIN</h4>
+                        <div class="row text-center">
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN Yogyakarta</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Total</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row"><i class="fas fa-male me-2 text-primary"></i>Laki-Laki</th>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                                <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row"><i class="fas fa-female me-2 text-primary"></i>Perempuan</th>
+                                   <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                                <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END REKAPITULASI KELAMIN -->
 
+             <!-- REKAPITULASI BY USIA -->
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
                         <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN USIA</h4>
                         <div class="row text-center">
-                            <div class="col-md-3"><h5>Kategori</h5>
-                              <p class="badge bg-primary fs-6">Umur 20-an</p><br>
-                              <p class="badge bg-primary fs-6">Umur 30-an</p><br>
-                              <p class="badge bg-primary fs-6">Umur 40-an</p><br>
-                              <p class="badge bg-primary fs-6">Umur 50-an</p>
-                            </div>
-                            <div class="col-md-3"><h5>Semua Pegawai</h5>
-                              <p class="badge bg-dark fs-6">32</p><br>
-                              <p class="badge bg-dark fs-6">21</p><br>
-                              <p class="badge bg-dark fs-6">55</p><br>
-                              <p class="badge bg-dark fs-6">12</p>
-                            </div>
-                           <div class="col-md-3"><h5>Kanreg I BKN Yogyakarta</h5>
-                              <p class="badge bg-dark fs-6">12</p><br>
-                              <p class="badge bg-dark fs-6">26</p><br>
-                              <p class="badge bg-dark fs-6">25</p><br>
-                              <p class="badge bg-dark fs-6">12</p>
-                            </div>
-                            <div class="col-md-3"><h5>UPT BKN Semarang</h5>
-                              <p class="badge bg-dark fs-6">12</p><br>
-                              <p class="badge bg-dark fs-6">26</p><br>
-                              <p class="badge bg-dark fs-6">33</p><br>
-                              <p class="badge bg-dark fs-6">02</p>
-                            </div>
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg Jogja</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Umur 20-an</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Umur 30-an</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Umur 40-an</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Umur 40-an</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <!-- END REKAPITULASI USIA -->
+
+            <!-- REKAPITULASI BY PENDIDIKAN -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card p-4">
+                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN PENDIDIKAN</h4>
+                        <div class="row text-center">
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg Jogja</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">SMP</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">SMA/SMK/SLTA</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">D III</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">DIV/S1</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">S2</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">S3</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END REKAPITULASI USIA -->
+
+             <!-- REKAPITULASI BY JABATAN -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card p-4">
+                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN JABATAN</h4>
+                        <div class="row text-center">
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg Jogja</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Jabatan Struktural</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Jabatan Fungsional</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Jabatan Pelaksana</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END REKAPITULASI JABATAN -->
+             <!-- REKAPITULASI BY GOLONGAN -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card p-4">
+                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN GOLONGAN</h4>
+                        <div class="row text-center">
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg Jogja</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Golongan V PPPK</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan VI PPPK</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan VII PPPK</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan VIII PPPK</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan IX PPPK</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan II PNS</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan III PNS</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Golongan IV PNS</th>
+                                  <td>John</td>
+                                  <td>Doe</td>
+                                  <td>@social</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END REKAPITULASI USIA -->
         </div>
     </div>
 

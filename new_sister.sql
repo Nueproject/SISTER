@@ -90,7 +90,8 @@ INSERT INTO `data_bidang` (`id_bidang`, `nama_bidang`) VALUES
 ('3', 'PMA'),
 ('4', 'PENGANGKATAN & MUTASI'),
 ('5', 'STATUS & PEMBERHENTIAN'),
-('6', 'TATA USAHA');
+('6', 'TATA USAHA'),
+('7', 'UPT BKN SEMARANG');
 
 
 -- ------------------------------------------------------------
