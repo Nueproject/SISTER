@@ -124,6 +124,7 @@ CREATE TABLE `data_pegawai` (
   `jenis_kelamin` char(1) DEFAULT NULL,
   `bidang` char(1) DEFAULT NULL,
   `jabatan` char(2) DEFAULT NULL,
+  `jenis_jabatan` char(2) DEFAULT NULL,
   `golongan` char(2) DEFAULT NULL,
   `status` char(2) DEFAULT NULL,
   `gelar` char(2) DEFAULT NULL,
@@ -131,14 +132,36 @@ CREATE TABLE `data_pegawai` (
   `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO data_pegawai (id_pegawai, nama_pegawai, nip_pegawai, jenis_kelamin, bidang, jabatan, golongan, status, gelar, nomor_hp, foto)
+INSERT INTO data_pegawai (id_pegawai, nama_pegawai, nip_pegawai, jenis_kelamin, bidang, jabatan, jenis_jabatan, golongan, status, gelar, nomor_hp, foto)
 VALUES 
-(1, 'RESEPSIONIS', '123456789123456789', '1','1','1', '1','1','1','1','foto1.jpg'),
-(2, 'Drs. PAULUS DWI LAKSONO HARJONO, MAP', '196711101993031001', '1','1','1','1','1','1','1','foto2.jpg'),
-(3, 'ERIKA DWI ANDININGTYAS, S.E.', '199308202019022004', '1','1','1','1', '1','1','1','foto3.jpg');
+(1, 'RESEPSIONIS', '123456789123456789', '1','1','1', '1', '1','1','1','1','foto1.jpg'),
+(2, 'Drs. PAULUS DWI LAKSONO HARJONO, MAP', '196711101993031001', '1','1', '1','1','1','1','1','1','foto2.jpg'),
+(3, 'ERIKA DWI ANDININGTYAS, S.E.', '199308202019022004', '1','1','1','1', '1', '1','1','1','foto3.jpg');
 -- --------------------------------------------------------------
 -- --------------------------------------------------------
 
+--
+-- Struktur dari tabel `jenis jabatan`
+--
+
+CREATE TABLE `jabatan` (
+  `id_jabatan` char(3) NOT NULL,
+  `nama_jabatan` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+-- Indeks untuk tabel `gelar`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`id_jabatan`);
+--
+-- Dumping data untuk tabel `gelar`
+--
+
+INSERT INTO jabatan (id_jabatan, nama_jabatan)
+VALUES
+(1, 'Struktural'),
+(2, 'Fungsional'),
+(3, 'Pelaksana');
 --
 -- Struktur dari tabel `gelar`
 --
@@ -219,19 +242,19 @@ VALUES
 --
 
 CREATE TABLE `jenis_jabatan` (
-  `id_jabatan` char(3) NOT NULL,
-  `nama_jabatan` varchar(150) NOT NULL
+  `id_jenis_jabatan` char(3) NOT NULL,
+  `nama_jenis_jabatan` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Indeks untuk tabel `jenis_jabatan`
 --
 ALTER TABLE `jenis_jabatan`
-  ADD PRIMARY KEY (`id_jabatan`);
+  ADD PRIMARY KEY (`id_jenis_jabatan`);
 --
 -- Dumping data untuk tabel `jenis_jabatan`
 --
 
-INSERT INTO jenis_jabatan (id_jabatan, nama_jabatan)
+INSERT INTO jenis_jabatan (id_jenis_jabatan, nama_jenis_jabatan)
 VALUES
 (1, 'Kepala Kantor'),
 (2, 'Kepala Bagian Tata Usaha'),

@@ -14,6 +14,7 @@
 		$nohp = $_SESSION['formTambahPegawai']['noHp'];
 		$bidang = $_SESSION['formTambahPegawai']['namaBidang'];
 		$jabatan = $_SESSION['formTambahPegawai']['namaJabatan'];
+		$jenisjabatan = $_SESSION['formTambahPegawai']['namaJenisJabatan'];
 		$gelar = $_SESSION['formTambahPegawai']['gelar'];
 		$golongan = $_SESSION['formTambahPegawai']['golongan'];
 		$kelamin = $_SESSION['formTambahPegawai']['kelamin'];
@@ -25,7 +26,7 @@
 		$newid = $count['idpegawai'] + 1;
 		
 		
-			$simpantamu = mysqli_query($koneksi, "insert into data_pegawai (id_pegawai, nip_pegawai, nama_pegawai, nomor_hp, bidang, jabatan, gelar, golongan, jenis_kelamin, status) values ('$newid', '$nip', '$nama', '$nohp', '$bidang', '$jabatan', '$gelar', '$golongan', '$kelamin', '$status')") or die(mysqli_error($koneksi));
+			$simpantamu = mysqli_query($koneksi, "insert into data_pegawai (id_pegawai, nip_pegawai, nama_pegawai, nomor_hp, bidang, jabatan, jenis_jabatan, gelar, golongan, jenis_kelamin, status) values ('$newid', '$nip', '$nama', '$nohp', '$bidang', '$jabatan', '$jenisjabatan','$gelar', '$golongan', '$kelamin', '$status')") or die(mysqli_error($koneksi));
 			
 		
 
@@ -47,6 +48,7 @@
 		$golongan = $_POST['golongan'];
 		$kelamin = $_POST['kelamin'];
 		$jabatan =$_POST['jabatan'];
+		$jenisjabatan =$_POST['jenisjabatan'];
 		$status =$_POST['status'];
 		$bidang = $_POST['bidangUpdate'];
 		$noHP = $_POST['NoHP'];
@@ -58,7 +60,8 @@
 		$updatePegawai = mysqli_query($koneksi, "update data_pegawai SET
 				nip_pegawai='".$nip."',
 				nama_pegawai='".$nama."',
-				jabatan='".$jabatan."',
+				jabatan='".$jenisjabatan."',
+				jenis_jabatan='".$jabatan."',
 				jenis_kelamin='".$kelamin."',
 				gelar='".$gelar."',
 				golongan='".$golongan."',

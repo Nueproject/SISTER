@@ -54,7 +54,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <th>Aksi</th>
                       </tr>
                       <?php        
-                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jabatan order by nama_pegawai asc");   
+                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jenis_jabatan order by nama_pegawai asc");   
      
                         $no=0;                     
                         while($usr=mysqli_fetch_array($datapns)){  
@@ -71,7 +71,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           <?php echo $usr['nama_pegawai']; ?>
                         </td>
                         <td>
-                          <?php echo $usr['nama_jabatan']; ?>
+                          <?php echo $usr['nama_jenis_jabatan']; ?>
                         </td>
                         <td>
                           <?php echo $usr['nama_bidang']; ?>

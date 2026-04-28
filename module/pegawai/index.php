@@ -104,7 +104,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                             $kueriQuo= mysqli_query($koneksi, $jabatan);
                             while($pro=mysqli_fetch_array($kueriQuo)){
                           ?>
-                        <option value="<?=$pro['id_jabatan']?>"><?=$pro['nama_jabatan']?></option> 
+                        <option value="<?=$pro['id_jenis_jabatan']?>"><?=$pro['nama_jenis_jabatan']?></option> 
                       <?php
                         }
                       ?>
@@ -162,7 +162,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <th class="text-center">Nomor HP</th>
                       </tr>
                       <?php        
-                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jabatan order by nama_pegawai asc");   
+                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jenis_jabatan order by nama_pegawai asc");   
      
                         $no=0;                     
                         while($usr=mysqli_fetch_array($datapns)){  
@@ -179,7 +179,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           <?php echo $usr['nip_pegawai']; ?>
                         </td>
                         <td class="text-center">
-                          <?php echo $usr['nama_jabatan']; ?>
+                          <?php echo $usr['nama_jenis_jabatan']; ?>
                         </td>
                         <td class="text-center">
                           <?php echo $usr['nama_bidang']; ?>
@@ -200,7 +200,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
          
 
           <?php
-      $datapeg= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jabatan"); 
+      $datapeg= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jenis_jabatan"); 
      
       while($pro=mysqli_fetch_array($datapeg)){
         ?>
@@ -233,13 +233,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Jabatan</label>
                   <select class="form-control" id="jabatan" name="jabatan">
-                  <?php $default = $pro['nama_jabatan']; ?>
-                    <option value="<?php echo $pro['id_jabatan']; ?>"> <?php echo $pro['nama_jabatan']; ?></option>
+                  <?php $default = $pro['nama_jenis_jabatan']; ?>
+                    <option value="<?php echo $pro['id_jenis_jabatan']; ?>"> <?php echo $pro['nama_jenis_jabatan']; ?></option>
                              <?php
                               $products = mysqli_query($koneksi,"select * from jenis_jabatan");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
-                                <option value="<?php echo $p['id_jabatan']; ?>"> <?php echo $p['nama_jabatan']; ?></option>
+                                <option value="<?php echo $p['id_jenis_jabatan']; ?>"> <?php echo $p['nama_jenis_jabatan']; ?></option>
                             <?php } ?>
                   </select>
 
