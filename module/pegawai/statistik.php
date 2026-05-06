@@ -186,6 +186,85 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             </div>
             <!-- END REKAPITULASI KELAMIN -->
 
+            <!-- REKAPITULASI BY STATUS -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card p-4">
+                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN STATUS</h4>
+                        <div class="row text-center">
+                           <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg Jogja</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Total</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">PNS</th>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=1 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=1 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=1";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">PPPK</th>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=2 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=2 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=2";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">PENUGASAN</th>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=5 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=5 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where status=5";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END REKAPITULASI JABATAN -->
+
+
              <!-- REKAPITULASI BY USIA -->
             <div class="row">
                 <div class="col-12">
@@ -252,6 +331,24 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               <tbody>
                                 <tr>
                                   <th scope="row">SMP</th>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=7 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=7 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">SMA/SMK/SLTA</th>
                                   <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=6 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
@@ -269,7 +366,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                                 ?></td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">SMA/SMK/SLTA</th>
+                                  <th scope="row">D III</th>
                                   <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=5 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
@@ -287,7 +384,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                                 ?></td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">D III</th>
+                                  <th scope="row">DIV/S1</th>
                                   <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=4 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
@@ -305,7 +402,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                                 ?></td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">DIV/S1</th>
+                                  <th scope="row">S2</th>
                                   <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=3 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
@@ -323,36 +420,18 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                                 ?></td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">S2</th>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang!=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang!=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang!=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?></td>
-                                </tr>
-                                <tr>
                                   <th scope="row">S3</th>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=1 and bidang!=7";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
                                 ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=1 and bidang=7";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
                                 ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=1";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
@@ -365,6 +444,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div>
             </div>
             <!-- END REKAPITULASI USIA -->
+
+
 
              <!-- REKAPITULASI BY JABATAN -->
             <div class="row">
@@ -384,25 +465,57 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               <tbody>
                                 <tr>
                                   <th scope="row">Jabatan Struktural</th>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where gelar=2 and bidang!=7";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=1 and bidang!=7";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
                                 ?></td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=1 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=1";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Jabatan Fungsional</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=2 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=2 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=2";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Jabatan Pelaksana</th>
-                                  <td>John</td>
-                                  <td>Doe</td>
-                                  <td>@social</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=3 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=3 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jabatan=3";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -429,51 +542,147 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               <tbody>
                                 <tr>
                                   <th scope="row">Golongan V PPPK</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=22 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=22 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=22";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan VI PPPK</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=23 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=23 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=23";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan VII PPPK</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=24 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=24 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=24";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan VIII PPPK</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=25 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=25 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=25";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan IX PPPK</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=26 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=26 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where golongan=26";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan II PNS</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang != 7 AND (golongan = 5 OR golongan = 6 OR golongan = 7 OR golongan = 8)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang = 7 AND (golongan = 5 OR golongan = 6 OR golongan = 7 OR golongan = 8)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE (golongan = 5 OR golongan = 6 OR golongan = 7 OR golongan = 8)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan III PNS</th>
-                                  <td>John</td>
-                                  <td>Doe</td>
-                                  <td>@social</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang != 7 AND (golongan = 9 OR golongan = 10 OR golongan = 11 OR golongan = 12)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang = 7 AND (golongan = 9 OR golongan = 10 OR golongan = 11 OR golongan = 12)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE (golongan = 9 OR golongan = 10 OR golongan = 11 OR golongan = 12)";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Golongan IV PNS</th>
-                                  <td>John</td>
-                                  <td>Doe</td>
-                                  <td>@social</td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang != 7 AND (golongan = 13 OR golongan = 14 OR golongan = 15 OR golongan = 16 OR golongan = 17)";;
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang = 7 AND (golongan = 13 OR golongan = 14 OR golongan = 15 OR golongan = 16 OR golongan = 17)";;
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE (golongan = 13 OR golongan = 14 OR golongan = 15 OR golongan = 16 OR golongan = 17)";;
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
                                 </tr>
                               </tbody>
                             </table>

@@ -60,8 +60,8 @@
 		$updatePegawai = mysqli_query($koneksi, "update data_pegawai SET
 				nip_pegawai='".$nip."',
 				nama_pegawai='".$nama."',
-				jabatan='".$jenisjabatan."',
-				jenis_jabatan='".$jabatan."',
+				jabatan='".$jabatan."',
+				jenis_jabatan='".$jenisjabatan."',
 				jenis_kelamin='".$kelamin."',
 				gelar='".$gelar."',
 				golongan='".$golongan."',

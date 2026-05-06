@@ -147,28 +147,28 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             </div>
 
            <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Jenis Jabatan</label>
+                  <label for="inputEmail3" class="control-label">Jabatan</label>
                   <select class="form-control" id="namaJabatan" name="namaJabatan">
                   <option selected>Pilih Jabatan</option>
                              <?php
-                              $products = mysqli_query($koneksi,"select * from jenis_jabatan");
+                              $products = mysqli_query($koneksi,"select * from jabatan");
                               while($p=mysqli_fetch_array($products)){                          
                              ?>
-                                <option value="<?php echo $p['id_jenis_jabatan']; ?>"> <?php echo $p['nama_jenis_jabatan']; ?></option>
+                                <option value="<?php echo $p['id_jabatan']; ?>"> <?php echo $p['nama_jabatan']; ?></option>
                             <?php } ?>
                   </select>
                 </div>
 
               <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Jabatan :</label>
-            <select class="form-control" id="namaJenisJabatan" name="namaJenisJabatan" required><?php $default = $pro['nama_jabatan']; ?>
+            <label for="recipient-name" class="col-form-label">Jenis Jabatan :</label>
+            <select class="form-control" id="namaJenisJabatan" name="namaJenisJabatan" required><?php $default = $pro['nama_jenis_jabatan']; ?>
                   <option selected>Pilih Jenis Jabatan</option>
                       <?php 
-                            $jenis_jabatan = "select * from jabatan order by nama_jabatan asc";
+                            $jenis_jabatan = "select * from jenis_jabatan order by nama_jenis_jabatan asc";
                             $kueriQuo= mysqli_query($koneksi, $jenis_jabatan);
                             while($pro=mysqli_fetch_array($kueriQuo)){
                           ?>
-                        <option value="<?=$pro['id_jabatan']?>"><?=$pro['nama_jabatan']?></option> 
+                        <option value="<?=$pro['id_jenis_jabatan']?>"><?=$pro['nama_jenis_jabatan']?></option> 
                       <?php
                         }
                       ?>
@@ -227,7 +227,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <th class="text-center">Bidang</th>                        
                         <th class="text-center">Aksi</th>
                        <?php        
-                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jenis_jabatan order by nama_pegawai asc");   
+                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jenis_jabatan =  jj.id_jenis_jabatan order by nama_pegawai asc");   
      
                         $no=0;                     
                         while($usr=mysqli_fetch_array($datapns)){  
@@ -272,7 +272,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
          
 
           <?php
-      $datapeg= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jabatan =  jj.id_jenis_jabatan join jabatan jb on dp.jabatan =  jb.id_jabatan join jenis_golongan jg on dp.golongan =  jg.id_golongan join jenis_kelamin jk on dp.jenis_kelamin =  jk.id_kelamin join gelar jgg on dp.gelar =  jgg.id_gelar join jenis_status js on dp.status =  js.id_status");  
+      $datapeg= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jenis_jabatan =  jj.id_jenis_jabatan join jabatan jb on dp.jabatan =  jb.id_jabatan join jenis_golongan jg on dp.golongan =  jg.id_golongan join jenis_kelamin jk on dp.jenis_kelamin =  jk.id_kelamin join gelar jgg on dp.gelar =  jgg.id_gelar join jenis_status js on dp.status =  js.id_status");  
 
       function  getBulan($bln){
         switch  ($bln){
@@ -391,7 +391,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Jabatan</label>
-                   <input type="text" class="form-control" id="jenisjabatan" name="jenisjabatan" value="<?php echo $pro['nama_jenis_jabatan'];?>"  placeholder="NIP Pegawai" readonly>
+                   <input type="text" class="form-control" id="jenisjabatan" name="jenisjabatan" value="<?php echo $pro['nama_jabatan'];?>"  placeholder="NIP Pegawai" readonly>
                 </div>
                  
                 <div class="form-group">
@@ -516,7 +516,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="control-label">Jenis Jabatan</label>
+                  <label for="inputEmail3" class="control-label">Jenis Jabatann</label>
                   <select class="form-control" id="jenisjabatan" name="jenisjabatan">
                   <?php $default = $pro['nama_jenis_jabatan']; ?>
                     <option value="<?php echo $pro['id_jenis_jabatan']; ?>"> <?php echo $pro['nama_jenis_jabatan']; ?></option>
