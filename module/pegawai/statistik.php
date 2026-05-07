@@ -117,7 +117,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     </div>
                 </div>
             </div>
-            <!-- REKAPITULASI BY USIA -->
+            <!-- REKAPITULASI BY kelamin -->
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
@@ -319,17 +319,17 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                                 </tr>
                                 <tr>
                                   <th scope="row">Umur 40-an</th>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang!=7 and TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 30 AND 40;";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang!=7 and TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 40 AND 50;";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
                                 ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang=7 and TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 30 AND 40;";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE bidang=7 and TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 40 AND 50;";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
                                 ?></td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 30 AND 40;";
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai WHERE TIMESTAMPDIFF(YEAR, STR_TO_DATE(SUBSTRING(nip_pegawai, 1, 8), '%Y%m%d'), CURDATE()) BETWEEN 40 AND 50;";
                                 $result = mysqli_query($koneksi, $sql); 
                                 $row = mysqli_fetch_assoc($result); ?>
                                <?php echo $row['total_pegawai']; 
