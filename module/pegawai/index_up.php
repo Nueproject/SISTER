@@ -316,45 +316,142 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     }     
 
       while($pro=mysqli_fetch_array($datapeg)){
-        $tahun_lahir = substr($pro['nip_pegawai'], 0, 4);
-        $bln = substr($pro['nip_pegawai'], 4, 2);
-        $tanggal_lahir = substr($pro['nip_pegawai'], 6, 2);
-        $bulan_lahir = getBulan($bln);
-        $ttl="$tanggal_lahir $bulan_lahir $tahun_lahir";
+         if (!function_exists('tgl_lahir_nip')) {
+                            function tgl_lahir_nip($nip) {
+                                $tahun   = substr($nip, 0, 4);
+                                $bulan   = substr($nip, 4, 2);
+                                $tanggal = substr($nip, 6, 2);
 
-        $tahunTmt = substr($pro['nip_pegawai'], 8, 4);
-        $bulanTmt = substr($pro['nip_pegawai'], 12, 2);
-        $bulan_tmt = getBulan($bulanTmt);
-        $angkatanpppk = substr($pro['nip_pegawai'], 13, 1);
-        $status = $pro['id_status'];
+                                $nama_bulan = [
+                                    '01' => 'Januari', '02' => 'Februari', '03' => 'Maret',
+                                    '04' => 'April',   '05' => 'Mei',      '06' => 'Juni',
+                                    '07' => 'Juli',    '08' => 'Agustus',  '09' => 'September',
+                                    '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+                                ];
 
-        if($pro['id_status']==1 or $pro['id_status']==5){
-          $tmt_diangkat = "1 $bulan_tmt $tahunTmt";
-        } else if($pro['id_status']==2 or $pro['id_status']==3){
-          $tmt_diangkat = "Angkatan $angkatanpppk";
-        } else{
-          $tmt_diangkat = "Bukan ASN";        
-        };
-        
+                                return (int)$tanggal . " " . $nama_bulan[$bulan] . " " . $tahun;
+                            }
+                        }
 
-        $ttl_lengkap ="$tahun_lahir-$bln-$tanggal_lahir";
-        $newTTL = date("d-m-Y", strtotime($ttl_lengkap));
-        $bday = new DateTime($newTTL);
-        $today = new DateTime('today');
-        $diff = $bday->diff($today);
-        $umur = "$diff->y";
-                
-        if($bln<12){
-          $bln_p = $bln+1;
-          $masa = 58-$umur;
-        }else{
-          $bln_p = $bln-11;
-          $masa = 58-$umur+1;
-        };
+                    // MENGHITUNG TMT
+                        if (!function_exists('getBulan')) {
+                        function  getBulan($bln){
+        switch  ($bln){
+            case  1:
+            return  "Januari";
+            break;
+            case  2:
+            return  "Februari";
+            break;
+            case  3:
+            return  "Maret";
+            break;
+            case  4:
+            return  "April";
+            break;
+            case  5:
+            return  "Mei";
+            break;
+            case  6:
+            return  "Juni";
+            break;
+            case  7:
+            return  "Juli";
+            break;
+            case  8:
+            return  "Agustus";
+            break;
+            case  9:
+            return  "September";
+            break;
+            case  10:
+            return  "Oktober";
+            break;
+            case  11:
+            return  "November";
+            break;
+            case  12:
+            return  "Desember";
+            break;
+        }
+    }    
+     } 
+     // END FUNCTION BULAN
+                       if (!function_exists('hitung_masa_kerja')) {
+    function hitung_masa_kerja($nip) {
+        // 1. Ambil Tahun dan Bulan pengangkatan dari NIP (digit ke-9 sampai 14)
+        $tahun_sk = substr($nip, 8, 4);
+        $bulan_sk = substr($nip, 12, 2);
 
-        $bln_pensiun = getBulan($bln_p);
-        $thn_pensiun = Date("Y")+$masa;
-        $tmt_pensiun = "1 $bln_pensiun $thn_pensiun";
+        // 2. Buat objek tanggal berdasarkan info NIP (set ke tanggal 1 bulan tersebut)
+        $tgl_mulai = new DateTime($tahun_sk . "-" . $bulan_sk . "-01");
+        $tgl_sekarang = new DateTime(); // Tanggal hari ini
+
+        // 3. Hitung selisih
+        $diff = $tgl_sekarang->diff($tgl_mulai);
+
+        // 4. Kembalikan hasil dalam format Tahun dan Bulan
+        return $diff->y . " Tahun, " . $diff->m . " Bulan";
+    }
+}
+
+                        $tahun_lahir = substr($pro['nip_pegawai'], 0, 4);
+                        $bln = substr($pro['nip_pegawai'], 4, 2);
+                        $tanggal_lahir = substr($pro['nip_pegawai'], 6, 2);
+                        $bulan_lahir = getBulan($bln);
+                        $ttl="$tanggal_lahir $bulan_lahir $tahun_lahir";
+
+                        $ttl_lengkap ="$tahun_lahir-$bln-$tanggal_lahir";
+                        $newTTL = date("d-m-Y", strtotime($ttl_lengkap));
+                        $bday = new DateTime($newTTL);
+                        $today = new DateTime('today');
+                        $diff = $bday->diff($today);
+                        $umur = "$diff->y";
+                        $thn_sekarang = date("Y");
+                        $angkatanpppk = substr($pro['nip_pegawai'], 8, 4);
+                        $jmlthun = $thn_sekarang-$angkatanpppk;
+                        $status = $pro['status'];
+
+                        $tahun_angkat = substr($pro['nip_pegawai'], 8, 4);
+                        $bulan_angka = substr($pro['nip_pegawai'], 12, 2);
+                        $bulan_angkatan = getBulan($bulan_angka);
+                        $pengangkatan= "1 $bulan_angkatan $tahun_angkat";
+
+
+
+                        if($pro['status']==1 or $pro['status']==5){
+                          $tmt_diangkat = "$pengangkatan";
+                        } else if($pro['status']==2 or $pro['status']==3){
+                          $tmt_diangkat = "$jmlthun Tahun";
+                        } else{
+                          $tmt_diangkat = "Bukan ASN";        
+                        };
+
+                       if($pro['jenis_jabatan']==13 or $pro['jenis_jabatan']==30 or $pro['jenis_jabatan']==41 or $pro['jenis_jabatan']==45 or $pro['jenis_jabatan']==46 or $pro['jenis_jabatan']==1 or $pro['jenis_jabatan']==2){
+                        if($bln<12){
+                          $bln_p = $bln+1;
+                          $masa = 59-$umur;
+                        }else{
+                          $bln_p = $bln-11;
+                          $masa = 59-$umur+1;
+                        };
+
+                       } else {
+                        if($bln<12){
+                          $bln_p = $bln+1;
+                          $masa = 57-$umur;
+                        }else{
+                          $bln_p = $bln-11;
+                          $masa = 57-$umur+1;
+                        };
+
+                       };
+
+                       
+
+                        $bln_pensiun = getBulan($bln_p);
+                        $thn_pensiun = Date("Y")+$masa;
+                        $tmt_pensiun = "1 $bln_pensiun $thn_pensiun";
 
         ?>
 
@@ -416,7 +513,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="control-label">Tanggal Lahir</label>
-                   <input type="text" class="form-control" value="<?php echo $ttl;?>"  placeholder="NIP Pegawai" readonly>
+                   <input type="text" class="form-control" value=" <?php echo tgl_lahir_nip($pro['nip_pegawai']); ?>"  placeholder="NIP Pegawai" readonly>
                 </div>
 
                 <div class="form-group">
