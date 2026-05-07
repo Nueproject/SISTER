@@ -112,63 +112,154 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     <div class="chart-container">
                         <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
                         Data Pegawai yang akan pensiun!</h5>
-                             <table class="table table-striped table-bordered">
-                              <thead>
-                                <tr>
-                                  <th class="table-dark" scope="col">Kategori</th>
-                                  <th class="table-dark" scope="col">Kanreg I BKN Yogyakarta</th>
-                                  <th class="table-dark" scope="col">UPT Semarang</th>
-                                  <th class="table-dark" scope="col">Total</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row"><i class="fas fa-male me-2 text-primary"></i>Laki-Laki</th>
-                                  <td>
-                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang!=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?>
-                                  </td>
-                                  <td>
-                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?>
-                                  </td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                                <?php echo $row['total_pegawai']; 
-                                ?></td>
-                                </tr>
-                                <tr>
-                                  <th scope="row"><i class="fas fa-female me-2 text-primary"></i>Perempuan</th>
-                                   <td>
-                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang!=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?>
-                                  </td>
-                                  <td>
-                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang=7";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                                <?php echo $row['total_pegawai']; 
-                                ?>
-                                  </td>
-                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2";
-                                $result = mysqli_query($koneksi, $sql); 
-                                $row = mysqli_fetch_assoc($result); ?>
-                               <?php echo $row['total_pegawai']; 
-                                ?></td>
-                                </tr>
-                                
-                              </tbody>
-                            </table>
+                              <table class="table table-hover">
+                      <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>NIP</th>
+                        <th>Lahir</th>                        
+                        <th>Bidang</th>
+                        <th>Masa Kerja</th>      
+                        <th>TMT Pensiun</th>
+                      </tr>
+                      <?php        
+                      $datapns= mysqli_query($koneksi,"select * from data_pegawai dp join data_bidang db on dp.bidang = db.id_bidang join jenis_jabatan jj on dp.jenis_jabatan =  jj.id_jenis_jabatan order by nama_pegawai asc");   
+
+                        $no=0;                     
+                        while($usr=mysqli_fetch_array($datapns)){  
+                      $usr_id = $usr['id_pegawai'];
+                      $no+=1;
+
+                      if (!function_exists('tgl_lahir_nip')) {
+                            function tgl_lahir_nip($nip) {
+                                $tahun   = substr($nip, 0, 4);
+                                $bulan   = substr($nip, 4, 2);
+                                $tanggal = substr($nip, 6, 2);
+
+                                $nama_bulan = [
+                                    '01' => 'Januari', '02' => 'Februari', '03' => 'Maret',
+                                    '04' => 'April',   '05' => 'Mei',      '06' => 'Juni',
+                                    '07' => 'Juli',    '08' => 'Agustus',  '09' => 'September',
+                                    '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+                                ];
+
+                                return (int)$tanggal . " " . $nama_bulan[$bulan] . " " . $tahun;
+                            }
+                        }
+
+                    // MENGHITUNG TMT
+                        if (!function_exists('getBulan')) {
+                        function  getBulan($bln){
+        switch  ($bln){
+            case  1:
+            return  "Januari";
+            break;
+            case  2:
+            return  "Februari";
+            break;
+            case  3:
+            return  "Maret";
+            break;
+            case  4:
+            return  "April";
+            break;
+            case  5:
+            return  "Mei";
+            break;
+            case  6:
+            return  "Juni";
+            break;
+            case  7:
+            return  "Juli";
+            break;
+            case  8:
+            return  "Agustus";
+            break;
+            case  9:
+            return  "September";
+            break;
+            case  10:
+            return  "Oktober";
+            break;
+            case  11:
+            return  "November";
+            break;
+            case  12:
+            return  "Desember";
+            break;
+        }
+    }    
+     } 
+     // END FUNCTION BULAN
+                       if (!function_exists('hitung_masa_kerja')) {
+    function hitung_masa_kerja($nip) {
+        // 1. Ambil Tahun dan Bulan pengangkatan dari NIP (digit ke-9 sampai 14)
+        $tahun_sk = substr($nip, 8, 4);
+        $bulan_sk = substr($nip, 12, 2);
+
+        // 2. Buat objek tanggal berdasarkan info NIP (set ke tanggal 1 bulan tersebut)
+        $tgl_mulai = new DateTime($tahun_sk . "-" . $bulan_sk . "-01");
+        $tgl_sekarang = new DateTime(); // Tanggal hari ini
+
+        // 3. Hitung selisih
+        $diff = $tgl_sekarang->diff($tgl_mulai);
+
+        // 4. Kembalikan hasil dalam format Tahun dan Bulan
+        return $diff->y . " Tahun, " . $diff->m . " Bulan";
+    }
+}
+                        $thn_sekarang = date("Y");
+                        $angkatanpppk = substr($usr['nip_pegawai'], 8, 4);
+                        $jmlthun = $thn_sekarang-$angkatanpppk;
+                        $status = $usr['status'];
+
+                        if($usr['status']==1 or $usr['status']==5){
+                          $tmt_diangkat = hitung_masa_kerja($usr['nip_pegawai']);
+                        } else if($usr['status']==2 or $usr['status']==3){
+                          $tmt_diangkat = "$jmlthun Tahun";
+                        } else{
+                          $tmt_diangkat = "Bukan ASN";        
+                        };
+
+                         $bln = substr($usr['nip_pegawai'], 4, 2);
+                        if($bln<12){
+                          $bln_p = $bln+1;
+                          $masa = 58-$umur;
+                        }else{
+                          $bln_p = $bln-11;
+                          $masa = 58-$umur+1;
+                        };
+
+                        $bln_pensiun = getBulan($bln_p);
+                        $thn_pensiun = Date("Y")+$masa;
+                        $tmt_pensiun = "1 $bln_pensiun $thn_pensiun";
+
+                      ?>
+                      
+                      <tr>             
+                        <td><?php echo $no; ?></td>
+                        <td>
+                          <?php echo $usr['nama_pegawai']; ?>
+                        </td>
+                        <td>
+                          <?php echo $usr['nip_pegawai']; ?>
+                        </td>
+                        <td>
+                          <?php echo tgl_lahir_nip($usr['nip_pegawai']); ?>
+                        </td>
+                        <td>
+                          <?php echo $usr['nama_bidang']; ?>
+                        </td>
+                        <td>
+                          <?php echo $tmt_diangkat; ?>
+                        </td>
+                        <td>
+                          Y
+                        </td>
+                      
+                      </tr>
+                      <?php } ?>
+                </table>
                     </div>
                 </div>
             </div>
