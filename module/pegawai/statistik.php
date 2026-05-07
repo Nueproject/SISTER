@@ -234,13 +234,27 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           $tmt_diangkat = "Bukan ASN";        
                         };
 
+                       if($usr['jenis_jabatan']==13 or $usr['jenis_jabatan']==30 or $usr['jenis_jabatan']==41 or $usr['jenis_jabatan']==45 or $usr['jenis_jabatan']==46 or $usr['jenis_jabatan']==1 or $usr['jenis_jabatan']==2){
                         if($bln<12){
                           $bln_p = $bln+1;
-                          $masa = 58-$umur;
+                          $masa = 59-$umur;
                         }else{
                           $bln_p = $bln-11;
-                          $masa = 58-$umur+1;
+                          $masa = 59-$umur+1;
                         };
+
+                       } else {
+                        if($bln<12){
+                          $bln_p = $bln+1;
+                          $masa = 57-$umur;
+                        }else{
+                          $bln_p = $bln-11;
+                          $masa = 57-$umur+1;
+                        };
+
+                       };
+
+                       
 
                         $bln_pensiun = getBulan($bln_p);
                         $thn_pensiun = Date("Y")+$masa;
