@@ -208,6 +208,19 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         return $diff->y . " Tahun, " . $diff->m . " Bulan";
     }
 }
+
+                        $tahun_lahir = substr($usr['nip_pegawai'], 0, 4);
+                        $bln = substr($usr['nip_pegawai'], 4, 2);
+                        $tanggal_lahir = substr($usr['nip_pegawai'], 6, 2);
+                        $bulan_lahir = getBulan($bln);
+                        $ttl="$tanggal_lahir $bulan_lahir $tahun_lahir";
+
+                        $ttl_lengkap ="$tahun_lahir-$bln-$tanggal_lahir";
+                        $newTTL = date("d-m-Y", strtotime($ttl_lengkap));
+                        $bday = new DateTime($newTTL);
+                        $today = new DateTime('today');
+                        $diff = $bday->diff($today);
+                        $umur = "$diff->y";
                         $thn_sekarang = date("Y");
                         $angkatanpppk = substr($usr['nip_pegawai'], 8, 4);
                         $jmlthun = $thn_sekarang-$angkatanpppk;
@@ -221,7 +234,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           $tmt_diangkat = "Bukan ASN";        
                         };
 
-                         $bln = substr($usr['nip_pegawai'], 4, 2);
                         if($bln<12){
                           $bln_p = $bln+1;
                           $masa = 58-$umur;
@@ -254,7 +266,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                           <?php echo $tmt_diangkat; ?>
                         </td>
                         <td>
-                          Y
+                          <?php echo $tmt_pensiun; ?>
                         </td>
                       
                       </tr>
