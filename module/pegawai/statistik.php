@@ -106,22 +106,79 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div>
             </div>
 
+<!-- PEGAWAI YANG AKAN PENSIUN -->
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="chart-container">
                         <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
-                        Data Pegawai yang akan pensiun</h5>
-                        <div style="height: 350px;">
-                            <canvas id="manualBarChart"></canvas>
-                        </div>
+                        Data Pegawai yang akan pensiun!</h5>
+                             <table class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th class="table-dark" scope="col">Kategori</th>
+                                  <th class="table-dark" scope="col">Kanreg I BKN Yogyakarta</th>
+                                  <th class="table-dark" scope="col">UPT Semarang</th>
+                                  <th class="table-dark" scope="col">Total</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row"><i class="fas fa-male me-2 text-primary"></i>Laki-Laki</th>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=1";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                                <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row"><i class="fas fa-female me-2 text-primary"></i>Perempuan</th>
+                                   <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang!=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td>
+                                    <?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2 and bidang=7";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                                <?php echo $row['total_pegawai']; 
+                                ?>
+                                  </td>
+                                  <td><?php $sql = "SELECT COUNT(*) AS total_pegawai FROM data_pegawai where jenis_kelamin=2";
+                                $result = mysqli_query($koneksi, $sql); 
+                                $row = mysqli_fetch_assoc($result); ?>
+                               <?php echo $row['total_pegawai']; 
+                                ?></td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
+            <!-- END PEGAWAI YANG AKAN PENSIUN -->
             <!-- REKAPITULASI BY kelamin -->
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN JENIS KELAMIN</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Jenis Kelamin</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
@@ -190,7 +247,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN STATUS</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Status</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
@@ -269,7 +327,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN USIA</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Usia</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
@@ -365,7 +424,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN PENDIDIKAN</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Pendidikan</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
@@ -499,7 +559,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN JABATAN</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Jabatan</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
@@ -576,7 +637,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card dashboard-card p-4">
-                        <h4 class="mb-4 border-bottom pb-2">REKAPITULASI BERDASARKAN GOLONGAN</h4>
+                        <h5 class="mb-4"><i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Data Pegawai Berdasarkan Golongan</h5>
                         <div class="row text-center">
                            <table class="table table-striped table-bordered">
                               <thead>
